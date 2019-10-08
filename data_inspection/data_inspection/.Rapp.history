@@ -1,0 +1,664 @@
+lag.plot(x1, diag.col = "forest green")
+plot(lag(x1, 1), x1)
+lag.plot(x1, diag.col = "forest green")
+z <- ts(matrix(rt(200 * 8, df = 3), 200, 8),
+plot(z, yax.flip = TRUE)
+z <- ts(matrix(rt(200 * 8, df = 3), 200, 8),#
+        start = c(1961, 1), frequency = 12)
+plot(z, yax.flip = TRUE)
+plot(z, axes = FALSE, ann = FALSE, frame.plot = TRUE,
+mar.multi = c(0,0,0,0), oma.multi = c(1,1,5,1))
+title("plot(ts(..), axes=FALSE, ann=FALSE, frame.plot=TRUE, mar..., oma...)")
+z <- window(z[,1:3], end = c(1969,12))
+plot(z, type = "b")    # multiple
+plot(z, plot.type = "single", lty = 1:3, col = 4:2)
+plot(nhtemp, lag(nhtemp, 1), cex = .8, col = "blue",
+main = "Lag plot of New Haven temperatures")
+plot(lag(sunspots, 1), sunspots, pch = ".")
+plot(lag(SMI,  1), SMI, pch = ".")
+sunspots
+class(sunspots)
+ts(x1)
+plot(lag(sunspots, 1), sunspots)
+plot(lag(sunspots, 1), sunspots, cex = .5)
+plot(lag(ts(x1), 1), x1, cex = .5)
+lag.plot(sunspots)
+plot(lag(sunspots, 1), sunspots, cex = .5)
+head(sunspots)
+sunspots
+lag.plot(x1, diag.col = "forest green")
+plot(lag(x1, 1), x1)
+plot(lag(x1), x1)
+plot(ts(lag(x1)), x1)
+plot(lag(ts(x1), 1), x1, cex = .5)
+lag.plot(sunspots)
+par(mfrow = c(2,2))#
+# histogram#
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# lag / time#
+plot(lag(x1), #
+     main = "",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+plot.ts(x1,#
+        main = "",)#
+abline(a = median(lag(x1)), b = 0, col = "red")
+acf(x1)
+acf(x1)
+plot(acf(x1))
+acf(x1)
+par(mfrow = c(2,3))#
+# histogram#
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# lag / time#
+plot(lag(x1), #
+     main = "",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+plot.ts(x1,#
+        main = "",)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+acf(x1)
+z <- ts(matrix(rt(200 * 8, df = 3), 200, 8),#
+        start = c(1961, 1), frequency = 12)#
+plot(z, yax.flip = TRUE)#
+plot(z, axes = FALSE, ann = FALSE, frame.plot = TRUE,#
+     mar.multi = c(0,0,0,0), oma.multi = c(1,1,5,1))#
+title("plot(ts(..), axes=FALSE, ann=FALSE, frame.plot=TRUE, mar..., oma...)")
+plot(z, type = "b")    # multiple
+plot.ts(x1,#
+        main = "",)
+plot.ts(x1,#
+        main = "",#
+        type = "b")
+abline(a = median(lag(x1)), b = 0, col = "red")
+par(mfrow = c(2,3))#
+# histogram#
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# lag / time#
+plot(lag(x1), #
+     main = "",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+plot.ts(x1,#
+        main = "",#
+        type = "b")#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+acf(x1)
+plot.new()
+## the four-plot#
+## reference Goodsmith et al., YYYY; Common Errors in Statistics#
+par(mfrow = c(2,3))#
+# histogram#
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# location#
+plot.new()#
+#
+# lag / time#
+plot(lag(x1), #
+     main = "",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+plot.ts(x1,#
+        main = "",#
+        type = "b")#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+acf(x1)
+par(mfrow = c(2,3))#
+# histogram#
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# location#
+plot.new()#
+#
+# lag / time#
+plot(lag(x1), #
+     main = "",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+plot.ts(x1,#
+        main = "")#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+acf(x1,#
+    main = "")
+?acf
+par(mfrow = c(2,3))#
+# histogram#
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# location#
+plot.new()#
+#
+# lag / time#
+plot(lag(x1), #
+     main = "",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+plot.ts(x1,#
+        main = "plot.ts")#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+acf(x1,#
+    main = "auto/cross-covariance/correlation")
+layout(matrix(c(1,2,3,4,5,5,6), 2, 3, byrow = TRUE))
+layout(matrix(c(1,2,3,4), 2, 3, byrow = TRUE))
+layout(matrix(c(1,2,3,4), 2, 2, byrow = TRUE))
+layout(matrix(c(1,2,3,4,5,6), 2, 3, byrow = TRUE))
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# location#
+plot.new()#
+#
+# lag / time#
+plot(lag(x1), #
+     main = "plot(lag())",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+plot.ts(x1,#
+        main = "plot.ts")#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+acf(x1,#
+    main = "auto/cross-covariance/correlation")
+layout(matrix(c(1,2,3,4,5,6), 2, 3, byrow = TRUE))#
+# histogram#
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+qqnorm(x1)#
+qqline(x1, col = "red")
+plot(lag(x1), #
+     main = "plot(lag())",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+plot.ts(x1,#
+        main = "plot.ts")#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+acf(x1,#
+    main = "auto/cross-covariance/correlation")
+lag.plot(x1, diag.col = "forest green")
+plot(lag(ts(x1)), x1)
+plot(lag(ts(x1)), x1)
+lag.plot(x1, diag.col = "forest green")
+?lag.plot(x1, diag.col = "forest green")
+plot(lag(ts(x1)), x1, asp = 1)
+lag.plot(x1, diag.col = "forest green")
+lag.plot(x1, diag.col = "forest green")
+lag.plot(x1, diag.col = "forest green")
+lag.plot(x1, diag.col = "forest green")
+x1
+lag(ts(x1))
+x1 == lag(ts(x1))
+x1 == ts(x1)
+lag(x1)
+all.equal(x1, ts(x1))
+?all.equal(x1, ts(x1))
+all.equal(x1, ts(x1))
+all.equal(x1, as.numeric(ts(x1)))
+all.equal(x1, as.numeric(lag(x1)))
+all.equal(x1,(lag(x1)))
+all.equal(x1, as.numeric(lag(ts(x1))))
+all.equal(x1, as.numeric(ts(lag(x1))))
+?ts
+?lag
+lag(x1, 12)
+all.equal(x1, as.numeric(ts(lag(x1, 12))))
+all.equal(x1, as.numeric(ts(lag(x1, 111))))
+all.equal(x1, as.numeric(ts(lag(x1))))
+split.screen()
+?split.screen()
+split.screen(c(2,3))
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# location#
+plot.new()#
+#
+# lag / time#
+plot(lag(x1), #
+     main = "plot(lag())",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+plot.ts(x1,#
+        main = "plot.ts")#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+acf(x1,#
+    main = "auto/cross-covariance/correlation")
+hist(x1,
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))
+split.screen(c(2,3))
+par(bg = "white")           # default is likely to be transparent
+split.screen(c(2, 1))       # split display into two screens
+split.screen(c(1, 3), screen = 2) # now split the bottom half into 3
+screen(1) # prepare screen 1 for output
+plot(10:1)
+screen(4) # prepare screen 4 for output
+plot(10:1)
+close.screen(all = TRUE)    # exit split-screen mode
+par(bg = "white")           # default is likely to be transparent
+split.screen(c(2, 1))       # split display into two screens
+split.screen(c(1, 3), screen = 2) # now split the bottom half into 3
+screen(1) # prepare screen 1 for output
+plot(10:1)
+screen(4) # prepare screen 4 for output
+plot(10:1)
+close.screen(all = TRUE)    # exit split-screen mode
+par(bg = "white")           # default is likely to be transparent
+split.screen(c(2, 1))       # split display into two screens
+split.screen(c(1, 3), screen = 2) # now split the bottom half into 3
+screen(1) # prepare screen 1 for output
+plot(10:1)
+screen(4) # prepare screen 4 for output
+lag.plot(x1, diag.col = "forest green")
+plot(1,2)
+split.screen(c(2, 3))       # split display into two screens
+plot(1,2)
+split.screen(c(2, 3))       # split display into two screens
+close.screen(all = TRUE)    # exit split-screen mode
+split.screen(c(2, 3))       # split display into two screens
+plot(1,2)
+plot(1,2)
+plot(1,2)
+screen(1)
+plot(1,2)
+plot(1,2)
+screen(3)
+plot(1,2)
+screen(2)
+plot(1,2)
+close.screen(all = TRUE)    # exit split-screen mode
+split.screen(c(1, 3))       # split display into two screens
+plot(1,2)
+plot(1,2)
+plot(1,2)
+split.screen(c(2, 3))#
+# histogram#
+screen(1)#
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+screen(2)#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# location#
+screen(3)#
+plot.new()#
+# lag / time#
+screen(4)#
+plot(lag(x1), #
+     main = "plot(lag())",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+screen(5)#
+plot.ts(x1,#
+        main = "plot.ts")#
+abline(a = median(lag(x1)), b = 0, col = "red")
+close.screen(all = TRUE)
+split.screen(c(2, 3))
+screen(1)
+hist(x1,
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))
+lines(density(x1), col = "red")
+screen(2)#
+qqnorm(x1)#
+qqline(x1, col = "red")
+screen(3)#
+plot.new()
+screen(4)#
+plot(lag(x1), #
+     main = "plot(lag())",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")
+screen(5)#
+plot.ts(x1,#
+        main = "plot.ts")#
+abline(a = median(lag(x1)), b = 0, col = "red")
+screen(6)#
+acf(x1,#
+    main = "auto/cross-covariance/correlation")
+close.screen(all = TRUE)
+split.screen(c(2, 3))#
+# histogram#
+screen(1)#
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+screen(2)#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# location#
+screen(3)#
+lag.plot(x1, diag.col = "forest green")#
+# lag / time#
+screen(4)#
+plot(lag(x1), #
+     main = "plot(lag())",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+screen(5)#
+plot.ts(x1,#
+        main = "plot.ts")#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+screen(6)#
+acf(x1,#
+    main = "auto/cross-covariance/correlation")#
+close.screen(all = TRUE)
+lag.plot(x1, diag.col = "forest green", cex = .75)
+split.screen(c(2, 3))#
+# histogram#
+screen(1)#
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+screen(2)#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# location#
+screen(3)#
+lag.plot(x1, diag.col = "forest green", cex = .75)#
+# lag / time#
+screen(4)#
+plot(lag(x1), #
+     main = "plot(lag())",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+screen(5)#
+plot.ts(x1,#
+        main = "plot.ts")#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+screen(6)#
+acf(x1,#
+    main = "auto/cross-covariance/correlation")#
+close.screen(all = TRUE)
+split.screen(c(2, 3))#
+# histogram#
+screen(1)#
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+screen(2)#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# location#
+screen(3)#
+lag.plot(x1,#
+         main = "lag.plot()"#
+         diag.col = "forest green", #
+        cex = .75)#
+# lag / time#
+screen(4)#
+plot(lag(x1), #
+     main = "plot(lag())",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+screen(5)#
+plot.ts(x1,#
+        main = "plot.ts")#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+screen(6)#
+acf(x1,#
+    main = "auto/cross-covariance/correlation")#
+close.screen(all = TRUE)
+split.screen(c(2, 3))#
+# histogram#
+screen(1)#
+hist(x1, #
+     probability = TRUE, #
+     main = "Histogram",#
+     breaks = 50, #
+     ylim = c(0,1))#
+lines(density(x1), col = "red")#
+# distribution#
+screen(2)#
+qqnorm(x1)#
+qqline(x1, col = "red")#
+# location#
+screen(3)#
+lag.plot(x1,#
+         main = "lag.plot()",#
+         diag.col = "forest green", #
+        cex = .75)#
+# lag / time#
+screen(4)#
+plot(lag(x1), #
+     main = "plot(lag())",#
+     cex = .75)#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+screen(5)#
+plot.ts(x1,#
+        main = "plot.ts")#
+abline(a = median(lag(x1)), b = 0, col = "red")#
+screen(6)#
+acf(x1,#
+    main = "auto/cross-covariance/correlation")#
+close.screen(all = TRUE)
+fourPlot <- function(x) {
+fourPlot <- function(x) {#
+  split.screen(c(2, 3))#
+  # histogram#
+  screen(1)#
+  hist(x, #
+       probability = TRUE, #
+       main = "Histogram",#
+       breaks = 50, #
+       ylim = c(0,1))#
+  lines(density(x), col = "red")#
+  # distribution#
+  screen(2)#
+  qqnorm(x)#
+  qqline(x, col = "red")#
+  # location#
+  screen(3)#
+  lag.plot(x,#
+           main = "lag.plot()",#
+           diag.col = "forest green", #
+           cex = .75)#
+  # lag / time#
+  screen(4)#
+  plot(lag(x), #
+       main = "plot(lag())",#
+       cex = .75)#
+  abline(a = median(lag(x1)), b = 0, col = "red")#
+  screen(5)#
+  plot.ts(x,#
+          main = "plot.ts")#
+  abline(a = median(lag(x1)), b = 0, col = "red")#
+  screen(6)#
+  acf(x,#
+      main = "auto/cross-\ncovariance/correlation")#
+  close.screen(all = TRUE) #
+}
+ls()
+fourPlot(x1)
+fourPlot(x1)
+plot(x3)
+boxplot(x2)
+boxplot(x3)
+boxplot(x1)
+hist(x2)
+hist(x1)
+violin(x2)
+violin(x1)
+plot(x1)
+plot(x1)
+plot(x2)
+plot(x3)
+plot(x1); plot(x2); plot(x3)
+par(mfrow = c(1,3))
+plot(x1); plot(x2); plot(x3)
+plot(x1, main = "numeric"); plot(x2, main = "categorical"); plot(x3, main = "ordinal")
+x4 <- c(NA,1,3,35,7,3,6,5,NA,8,9,4,3,2,6,8,9,0,54,434,NA)
+x4
+boxplot.stats(x4)$out # find out outliers
+x4[!x4 %in% boxplot.stats(x4)$out] # filter out outliers
+is.na(x1)
+which(is.na(x2))
+which(is.na(x4))
+df <- as.data.frame(x1, x2, x3, x4)
+df
+df <- as.data.frame(x1, x2, x3
+)
+df <- data.frame(x1, x2, x3, x4)
+length(x4)
+df <- data.frame(x1, x2, x3, sample(x4, 200, replace = TRUE))
+head(df)
+which(is.na(x4))
+boxplot.stats(x4)$out # find out outliers
+pairs(df)
+plot(df)
+plot(df)
+?GGally::ggpairs(df)
+GGally::ggpairs(df)
+corr(df)
+cor(df)
+Hmisc::cor(df)
+Hmisc::corr(df)
+cor(df)
+haed(df)
+head(df)
+data("cars")
+head(cars)
+library(blmeco)
+data("frogs")
+head(frogs)
+pairs(frogs)
+plot(frogs)
+GGally::ggpairs(frogs)
+GGally::ggpairs(frogs[,1:7])
+cor(frogs)
+cor(frogs[ ,1:7])
+Hmisc::rcorr(as.matrix(frogs[ ,1:7]))
+?Hmisc::rcorr(as.matrix(frogs[ ,1:7]))
+corr_matrix <- Hmisc::rcorr(as.matrix(frogs[ ,1:7]))
+corr_matrix
+Hmisc::flattenCorrMatrix(corr_matrix$r, corr_matrix$P)
+?flattenCorrMatrix
+symnum(corr_matrix, cutpoints = c(0.3, 0.6, 0.8, 0.9, 0.95),
+symbols = c(" ", ".", ",", "+", "*", "B"),
+abbr.colnames = TRUE)
+symnum(corr_matrix, abbr.colnames = FALSE)
+symnum(corr_matrix$P, abbr.colnames = FALSE)
+symnum(corr(frogs[, 1:7]), abbr.colnames = FALSE)
+cor(frogs[, 1:7])
+symnum(cor(frogs[, 1:7]), abbr.colnames = FALSE)
+symnum(corr_matrix$P, abbr.colnames = FALSE)
+corr_matrix
+str(corr_matrix)
+symnum(corr_matrix$r, abbr.colnames = FALSE)
+symnum(cor(frogs[, 1:7]), abbr.colnames = FALSE)
+symnum(corr_matrix$P, abbr.colnames = FALSE)
+corr_matrix
+corr_matrix1 <- cor(frogs[ ,1:7])
+corr_matrix2 <- Hmisc::rcorr(as.matrix(frogs[ ,1:7]))
+corr_matrix2
+corrplot::corrplot(corr_matrix1, type = "upper", order = "hclust",
+tl.col = "black", tl.srt = 45)
+heatmap(x = corr_matrix1, col = col, symm = TRUE)
+heatmap(x = corr_matrix1, symm = TRUE)
+col<- colorRampPalette(c("blue", "white", "red"))(20)
+col

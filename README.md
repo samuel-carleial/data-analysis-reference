@@ -5,7 +5,8 @@ Language: R
 
 Main topics:
 - Clustering
-- Data_visualization		
+- Data inspection
+- Data visualization (maps)		
 - Imputation			
 - Modelling: (multi-)linear (mixed) models
 - Modelling: validating statistical models
