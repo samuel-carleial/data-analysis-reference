@@ -38,46 +38,53 @@ hist(x1)
 par(mfrow = c(1,3))
 plot(x1, main = "numeric"); plot(x2, main = "categorical"); plot(x3, main = "ordinal")
 
-## the four-plot
-## reference: Goodsmith et al., YYYY; Common Errors in Statistics
-## upgrade: user-defined function to produce the four-plot with add-ons
-fourPlot <- function(x) {
+## the six-plot
+## reference: Good & Hardin, 2012; Common Errors in Statistics
+## an upgrade of the four plot: user-defined function to produce the four-plot with add-ons
+sixPlot <- function(x) {
   split.screen(c(2, 3))
-  # histogram
+  
   screen(1)
-  hist(x, 
+  hist(x,
+       main = "Histogram", xlab = "concentration of values", ylab = "density",
        probability = TRUE, 
-       main = "Histogram",
-       breaks = 50, 
-       ylim = c(0,1))
+       breaks = length(x)/4, 
+       ylim = c(0,1)
+       )
   lines(density(x), col = "red")
-  # distribution
+  
   screen(2)
-  qqnorm(x)
+  qqnorm(x,
+         main = "Normal Q-Q plot", xlab = "theoretical quantiles", ylab = "sample quantiles",
+         cex = .75)
   qqline(x, col = "red")
-  # location
+  
   screen(3)
   lag.plot(x,
-           main = "lag.plot()",
-           diag.col = "forest green", 
+           main = "Lag plot",
+           diag.col = "blue", 
            cex = .75)
-  # lag / time
+  
   screen(4)
-  plot(lag(x), 
-       main = "plot(lag())",
+  plot(lag(x),
+       main = "Time plot (1)", xlab = "time\n(sampling sequence)", ylab = "concentration of values",
        cex = .75)
-  abline(a = median(lag(x1)), b = 0, col = "red")
+  abline(a = median(lag(x)), b = 0, col = "red")
+  mtext("median", cex = .75, 4, col = "red")
+  
   screen(5)
   plot.ts(x,
-          main = "plot.ts")
-  abline(a = median(lag(x1)), b = 0, col = "red")
+          main = "Time plot (2)", xlab = "time\n(sampling sequence)", ylab = "concentration of values")
+  abline(a = median(lag(x)), b = 0, col = "red")
+  mtext("median", cex = .75, 4, col = "red")
+  
   screen(6)
   acf(x,
-      main = "auto/cross-\ncovariance/correlation")
+      main = "Autocorrelation plot", xlab = "lag", ylab = "ACF")
   close.screen(all = TRUE) 
 }
 
-fourPlot(x1)
+sixPlot(x1)
 
 ## outliers
 # definition (Samuels et al., 2012; in Statistics for the Life Sciences):
