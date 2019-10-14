@@ -1,0 +1,70 @@
+---
+title: "Study ..."
+subtitle: "report on ... (version ...)"
+author: "Samuel Carleial"
+date: "YYYY.MM.DD"
+output:
+  pdf_document:
+     latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r preliminaries, include=FALSE}
+rm(list = ls())
+set.seed(12444)
+#library("")
+#load("")
+```
+
+Text...
+
+```{r section1, include=FALSE}
+
+
+```
+
+Text...
+
+```{r section2, include=FALSE}
+
+
+```
+
+Text...
+
+```{r section3, include=FALSE}
+
+
+```
+
+Text...
+
+```{r markdown help code, eval=FALSE, include=FALSE}
+
+# Header 1
+
+Text...
+
+## Sub-header 1
+### Sub-header 1.1
+## Sub-header 2
+### Sub-header 2.1
+
+
+*bold*
+**italics**
+
+* item1
+
+* item2
+
+* item3
+	+ subitem3.1
+
+weblink or email: <address>
+weblink with legend: [legend](address)
+
+```
