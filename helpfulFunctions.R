@@ -34,7 +34,6 @@ sixPlot <- function(x) {
   hist(x,
        main = "Histogram", xlab = "concentration of values", ylab = "density",
        probability = TRUE, 
-       breaks = length(unique(x)), 
        ylim = c(0,1)
        )
   lines(density(x), col = "red")
@@ -46,21 +45,18 @@ sixPlot <- function(x) {
   qqline(x, col = "red")
   
   screen(3)
-  lag.plot(x,
-           main = "Lag plot",
-           diag.col = "blue", 
-           cex = .75)
+  boxplot(x, 
+          main = "Boxplot", ylab = "concentration of values")
   
   screen(4)
-  plot(lag(x),
-       main = "Time plot (1)", xlab = "time\n(sampling sequence)", ylab = "concentration of values",
-       cex = .75)
-  abline(a = median(lag(x)), b = 0, col = "red")
-  mtext("median", cex = .75, 4, col = "red")
+  lag.plot(x,
+           main = "Lag plot",
+           diag.col = "blue",
+           cex = .75)
   
   screen(5)
   plot.ts(x,
-          main = "Time plot (2)", xlab = "time\n(sampling sequence)", ylab = "concentration of values")
+          main = "Time plot", xlab = "time\n(sampling sequence)", ylab = "concentration of values")
   abline(a = median(lag(x)), b = 0, col = "red")
   mtext("median", cex = .75, 4, col = "red")
   
