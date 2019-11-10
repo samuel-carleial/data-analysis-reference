@@ -1,6 +1,6 @@
 ---
 title: "Programação em R"
-subtitle: "Tutorial 1: alguns pontos importantes a considerar"
+subtitle: "Tutorial 1: relembrando o básico (pontos importantes)"
 author: "Samuel Carleial"
 date: "December 2019"
 output:
@@ -22,19 +22,19 @@ plot(seq(5,10,.1), exp(seq(5,10,.1)),
 lines(seq(5,10,.1), exp(seq(5,10,.1)), col = "red")
 ```
 
-R é uma linguagem orientada a objetos. Ou seja, nela o foco se dá na criação e manipulação (obviamente) de **objetos** que são carregados na sessão atual do R, consumindo a memória corrente do computador (RAM).
+R é uma linguagem orientada a objetos. Ou seja, nela o foco se dá na criação e manipulação de... **objetos** (obviamente) que são carregados na sessão atual do R, consumindo a memória corrente do computador (RAM).
 
 ```{r}
 # Exemplo de objeto em R
 #  objeto_x, um vetor composto por números inteiros
-objeto_x <- c(1,2,3,4,5)
+objeto_x <- c(15,7,20,4,12)
 objeto_x
 ```
 
 Neste tutorial, serão descritos alguns pontos importantes e cruciais da linguagem R, que podem ser de extrema importância na análise e manipulação de dados.
 
 ## Classes
-Todo e qualquer objeto em R deve pertencer a uma classe, que por sua vez possui diferentes propriedades. As classes mais comuns usada numa análise de dados são os data.frame ou data.table (para conjuntos de dados) ou vetores (para variáveis singulares). Existem em R muitas outras classes e tipos de objetos, como matrizes, arranjos, objetos provenientes de modelos estatísticos, etc.
+Todo e qualquer objeto em R deve pertencer a uma classe, que por sua vez possui diferentes propriedades. As classes mais comuns usadas numa análise de dados são vetores (variáveis singulares) e os (conjuntos de dados) data.frame ou data.table. Existem em R muitas outras classes e tipos de objetos, como matrizes, arranjos, objetos provenientes de modelos estatísticos, etc.
 
 ```{r}
 # Exemplo de diferentes objetos que podem existir em R
@@ -49,7 +49,7 @@ paste("variavel:", class(variavel))
 
 ## Vetores
 
-Especificamente, vetores ou variáveis singulares podem assumir diferentes tipos, como números (contínuos ou integrais), caracteres, fatores, datas, etc. Para definir um vetor, usa-se a função c() onde cada elemento do vetor deve ser separado por vírgulas. Aliás, operações usando vetores geralmente são muito fáceis de realizar, como soma, multiplicação, etc. Veja abaixo:
+Vetores (variáveis singulares) podem assumir diferentes tipos, como números (contínuos ou integrais), caracteres, fatores, datas, etc. Para definir um vetor, usa-se a função c() onde cada elemento do vetor deve ser separado por vírgulas. Aliás, operações usando vetores geralmente são muito fáceis de realizar, como soma, multiplicação, etc. Veja abaixo:
 
 ```{r}
 # números contínuos
@@ -82,7 +82,10 @@ print(objeto_x * 10)
 print(objeto_x + objeto_x)
 ```
 
-Adicionalmente, modelos lineares podem conter muitas informações diferentes dentro de um mesmo objeto. Portanto, objetos provenientes de modelos lineares (ex: lme), contém dentre outras informações, valores de p, coeficientes dos preditores, formula do modelo, parâmetros da formula usada, etc. Para isso, esses objetos são constituídos de diferentes elementos, que podem ser inspecionados usando diferentes maneiras.
+## Modelos estatísticos
+### objetos com um conjunto de variáveis
+
+Modelos lineares produzidos por funções em R contém diferentes informações que podem ser armazenados num único objeto. Objetos provenientes de modelos lineares (ex: lme), contém dentre outras informações, valores de p, coeficientes dos preditores, fórmula do modelo, parâmetros da fórmula usada, etc. Tais objetos podem ser inspecionados usando diferentes maneiras.
 
 ```{r message=FALSE, warning=FALSE}
 # Exemplo de modelo e sua classe
@@ -92,25 +95,30 @@ class(modelo)
 ```
 
 ```{r}
-# Estrutura do modelo. O que existe dentro do objeto modelo ? 
+# Estrutura do modelo. O que existe dentro do objeto "modelo" ? 
 names(modelo)
 ```
 
-## Indexamento
+## Indexação
 
-Uma característica fundamental em R (mas também em outras linguagens de programação) é poder acessar valores usando indexamento. Ou seja, usar a posição dentro do objeto (index, linha ou coluna) para poder realizar diferentes ações nos dados.
+Uma característica fundamental em R (mas também em outras linguagens de programação) é poder acessar valores usando indexação. Ou seja, usar a posição dentro do objeto (ordem, linha ou coluna) para poder extrair elementos ou realizar diferentes ações nos dados.
 
-Em vetores (1 dimensão), é possível acessar os valores usando index (1:length(x)).
+Em vetores (1 dimensão), é possível acessar os valores usando index ou a ordem dos elementos (1:length(x)).
+
 
 ```{r}
-variavel[1] # primeiro elemento
+variavel # objeto
 ```
 
 ```{r}
-variavel[5] # último elemento
+variavel[1] # primeiro elemento do objeto
 ```
 
-Em tabelas / matrizes, é possível fazer o mesmo através de colunas e linhas.
+```{r}
+variavel[5] # último elemento do objeto
+```
+
+Em tabelas e matrizes, é possível fazer o mesmo através de colunas e linhas.
 
 ```{r}
 dados[,]

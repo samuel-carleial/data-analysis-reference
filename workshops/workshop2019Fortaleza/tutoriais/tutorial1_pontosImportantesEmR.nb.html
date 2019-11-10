@@ -1745,7 +1745,7 @@ summary {
 
 
 <h1 class="title toc-ignore">Programação em R</h1>
-<h3 class="subtitle">Tutorial 1: alguns pontos importantes a considerar</h3>
+<h3 class="subtitle">Tutorial 1: relembrando o básico (pontos importantes)</h3>
 <h4 class="author">Samuel Carleial</h4>
 <h4 class="date">December 2019</h4>
 
@@ -1760,55 +1760,39 @@ summary {
 <!-- rnb-chunk-begin -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>R é uma linguagem orientada a objetos. Ou seja, nela o foco se dá na criação e manipulação (obviamente) de <strong>objetos</strong> que são carregados na sessão atual do R, consumindo a memória corrente do computador (RAM).</p>
+<p>R é uma linguagem orientada a objetos. Ou seja, nela o foco se dá na criação e manipulação de… <strong>objetos</strong> (obviamente) que são carregados na sessão atual do R, consumindo a memória corrente do computador (RAM).</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyAgb2JqZXRvX3gsIHVtIHZldG9yIGNvbXBvc3RvIHBvciBuw7ptZXJvcyBpbnRlaXJvc1xub2JqZXRvX3ggPC0gYygxLDIsMyw0LDUpXG5vYmpldG9feFxuXG5gYGAifQ== -->
-<pre class="r"><code>#  objeto_x, um vetor composto por números inteiros
-objeto_x &lt;- c(1,2,3,4,5)
-objeto_x
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBFeGVtcGxvIGRlIG9iamV0byBlbSBSXG4jICBvYmpldG9feCwgdW0gdmV0b3IgY29tcG9zdG8gcG9yIG7Dum1lcm9zIGludGVpcm9zXG5vYmpldG9feCA8LSBjKDE1LDcsMjAsNCwxMilcbm9iamV0b194XG5gYGAifQ== -->
+<pre class="r"><code># Exemplo de objeto em R
+#  objeto_x, um vetor composto por números inteiros
+objeto_x &lt;- c(15,7,20,4,12)
+objeto_x</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEgMiAzIDQgNVxuIn0= -->
-<pre><code>[1] 1 2 3 4 5</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Neste tutorial, serão descritos alguns pontos importantes e cruciais da linguagem R, que podem ser de extrema importância na análise e manipulação de dados.</p>
 <div id="classes" class="section level2">
 <h2>Classes</h2>
-<p>Todo e qualquer objeto em R deve pertencer a uma classe, que por sua vez possui diferentes propriedades. As classes mais comuns usada numa análise de dados são os data.frame ou data.table (para conjuntos de dados) ou vetores (para variáveis singulares). Existem em R muitas outras classes e tipos de objetos, como matrizes, arranjos, objetos provenientes de modelos estatísticos, etc.</p>
+<p>Todo e qualquer objeto em R deve pertencer a uma classe, que por sua vez possui diferentes propriedades. As classes mais comuns usadas numa análise de dados são vetores (variáveis singulares) e os (conjuntos de dados) data.frame ou data.table. Existem em R muitas outras classes e tipos de objetos, como matrizes, arranjos, objetos provenientes de modelos estatísticos, etc.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGFkb3MgPC0gZGF0YS5mcmFtZShcIlgxXCIgPSBybm9ybSgyMCksIFwiWDJcIiA9IFwiY29udHJvbGVcIilcbm1hdHJpeiA8LSBtYXRyaXgoZGF0YSA9IDE6MjAsIG5jb2wgPSA1KVxudmFyaWF2ZWwgPC0gb2JqZXRvX3hcblxucGFzdGUoXCJkYWRvczpcIiwgY2xhc3MoZGFkb3MpKVxuXG5gYGAifQ== -->
-<pre class="r"><code>dados &lt;- data.frame(&quot;X1&quot; = rnorm(20), &quot;X2&quot; = &quot;controle&quot;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBFeGVtcGxvIGRlIGRpZmVyZW50ZXMgb2JqZXRvcyBxdWUgcG9kZW0gZXhpc3RpciBlbSBSXG5kYWRvcyA8LSBkYXRhLmZyYW1lKFwiWDFcIiA9IHJub3JtKDIwKSwgXCJYMlwiID0gXCJjb250cm9sZVwiKVxubWF0cml6IDwtIG1hdHJpeChkYXRhID0gMToyMCwgbmNvbCA9IDUpXG52YXJpYXZlbCA8LSBvYmpldG9feFxuXG5wYXN0ZShcImRhZG9zOlwiLCBjbGFzcyhkYWRvcykpXG5wYXN0ZShcIm1hdHJpejpcIiwgY2xhc3MobWF0cml6KSlcbnBhc3RlKFwidmFyaWF2ZWw6XCIsIGNsYXNzKHZhcmlhdmVsKSlcbmBgYCJ9 -->
+<pre class="r"><code># Exemplo de diferentes objetos que podem existir em R
+dados &lt;- data.frame(&quot;X1&quot; = rnorm(20), &quot;X2&quot; = &quot;controle&quot;)
 matriz &lt;- matrix(data = 1:20, ncol = 5)
 variavel &lt;- objeto_x
 
 paste(&quot;dados:&quot;, class(dados))
-</code></pre>
+paste(&quot;matriz:&quot;, class(matriz))
+paste(&quot;variavel:&quot;, class(variavel))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiZGFkb3M6IGRhdGEuZnJhbWVcIlxuIn0= -->
-<pre><code>[1] &quot;dados: data.frame&quot;</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGFzdGUoXCJtYXRyaXo6XCIsIGNsYXNzKG1hdHJpeikpXG5gYGAifQ== -->
-<pre class="r"><code>paste(&quot;matriz:&quot;, class(matriz))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwibWF0cml6OiBtYXRyaXhcIlxuIn0= -->
-<pre><code>[1] &quot;matriz: matrix&quot;</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGFzdGUoXCJ2YXJpYXZlbDpcIiwgY2xhc3ModmFyaWF2ZWwpKVxuYGBgIn0= -->
-<pre class="r"><code>paste(&quot;variavel:&quot;, class(variavel))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwidmFyaWF2ZWw6IG51bWVyaWNcIlxuIn0= -->
-<pre><code>[1] &quot;variavel: numeric&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
 <div id="vetores" class="section level2">
 <h2>Vetores</h2>
-<p>Especificamente, vetores ou variáveis singulares podem assumir diferentes tipos, como números (contínuos ou integrais), caracteres, fatores, datas, etc. Para definir um vetor, usa-se a função c() onde cada elemento do vetor deve ser separado por vírgulas. Aliás, operações usando vetores geralmente são muito fáceis de realizar, como soma, multiplicação, etc. Veja abaixo:</p>
+<p>Vetores (variáveis singulares) podem assumir diferentes tipos, como números (contínuos ou integrais), caracteres, fatores, datas, etc. Para definir um vetor, usa-se a função c() onde cada elemento do vetor deve ser separado por vírgulas. Aliás, operações usando vetores geralmente são muito fáceis de realizar, como soma, multiplicação, etc. Veja abaixo:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBuw7ptZXJvcyBjb250w61udW9zXG5jbGFzcyhjKDAuNCwgMS4yLCAzLjcpKVxuYGBgIn0= -->
@@ -1851,81 +1835,70 @@ class(as.Date(c(&quot;2019-10-02&quot;, &quot;2019-07-22&quot;, &quot;2018-11-02
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvcGVyYcOnw6NvIHVzYW5kbyB1bSB2ZXRvclxucHJpbnQob2JqZXRvX3ggKiAxMClcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvcGVyYcOnw6NvIHVzYW5kbyB1bSB2ZXRvclxucHJpbnQob2JqZXRvX3ggKiAxMClcbnByaW50KG9iamV0b194ICsgb2JqZXRvX3gpXG5gYGAifQ== -->
 <pre class="r"><code># operação usando um vetor
-print(objeto_x * 10)</code></pre>
+print(objeto_x * 10)
+print(objeto_x + objeto_x)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEwIDIwIDMwIDQwIDUwXG4ifQ== -->
-<pre><code>[1] 10 20 30 40 50</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQob2JqZXRvX3ggKyBvYmpldG9feClcbmBgYCJ9 -->
-<pre class="r"><code>print(objeto_x + objeto_x)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdICAyICA0ICA2ICA4IDEwXG4ifQ== -->
-<pre><code>[1]  2  4  6  8 10</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Adicionalmente, modelos lineares podem conter muitas informações diferentes dentro de um mesmo objeto. Portanto, objetos provenientes de modelos lineares (ex: lme), contém dentre outras informações, valores de p, coeficientes dos preditores, formula do modelo, parâmetros da formula usada, etc. Para isso, esses objetos são constituídos de diferentes elementos, que podem ser inspecionados usando diferentes maneiras.</p>
+</div>
+<div id="modelos-estatísticos" class="section level2">
+<h2>Modelos estatísticos</h2>
+<div id="objetos-com-um-conjunto-de-variáveis" class="section level3">
+<h3>objetos com um conjunto de variáveis</h3>
+<p>Modelos lineares produzidos por funções em R contém diferentes informações que podem ser armazenados num único objeto. Objetos provenientes de modelos lineares (ex: lme), contém dentre outras informações, valores de p, coeficientes dos preditores, fórmula do modelo, parâmetros da fórmula usada, etc. Tais objetos podem ser inspecionados usando diferentes maneiras.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShcIm5sbWVcIilcbm1vZGVsbyA8LSBsbWUoZGlzdGFuY2UgfiBhZ2UsIGRhdGEgPSBPcnRob2RvbnQpXG5jbGFzcyhtb2RlbG8pXG5cbmBgYCJ9 -->
-<pre class="r"><code>library(&quot;nlme&quot;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBFeGVtcGxvIGRlIG1vZGVsbyBlIHN1YSBjbGFzc2VcbmxpYnJhcnkoXCJubG1lXCIpXG5tb2RlbG8gPC0gbG1lKGRpc3RhbmNlIH4gYWdlLCBkYXRhID0gT3J0aG9kb250KVxuY2xhc3MobW9kZWxvKVxuYGBgIn0= -->
+<pre class="r"><code># Exemplo de modelo e sua classe
+library(&quot;nlme&quot;)
 modelo &lt;- lme(distance ~ age, data = Orthodont)
-class(modelo)
-</code></pre>
+class(modelo)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwibG1lXCJcbiJ9 -->
-<pre><code>[1] &quot;lme&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmFtZXMobW9kZWxvKVxuXG5gYGAifQ== -->
-<pre class="r"><code>names(modelo)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBFc3RydXR1cmEgZG8gbW9kZWxvLiBPIHF1ZSBleGlzdGUgZGVudHJvIGRvIG9iamV0byBcIm1vZGVsb1wiID8gXG5uYW1lcyhtb2RlbG8pXG5gYGAifQ== -->
+<pre class="r"><code># Estrutura do modelo. O que existe dentro do objeto &quot;modelo&quot; ? 
+names(modelo)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm1vZGVsU3RydWN0XCIgIFwiZGltc1wiICAgICAgICAgXCJjb250cmFzdHNcIiAgICBcImNvZWZmaWNpZW50c1wiIFwidmFyRml4XCIgICAgICAgXCJzaWdtYVwiICAgICAgIFxuIFs3XSBcImFwVmFyXCIgICAgICAgIFwibG9nTGlrXCIgICAgICAgXCJudW1JdGVyXCIgICAgICBcImdyb3Vwc1wiICAgICAgIFwiY2FsbFwiICAgICAgICAgXCJ0ZXJtc1wiICAgICAgIFxuWzEzXSBcIm1ldGhvZFwiICAgICAgIFwiZml0dGVkXCIgICAgICAgXCJyZXNpZHVhbHNcIiAgICBcImZpeERGXCIgICAgICAgIFwibmEuYWN0aW9uXCIgICAgXCJkYXRhXCIgICAgICAgIFxuIn0= -->
-<pre><code> [1] &quot;modelStruct&quot;  &quot;dims&quot;         &quot;contrasts&quot;    &quot;coefficients&quot; &quot;varFix&quot;       &quot;sigma&quot;       
- [7] &quot;apVar&quot;        &quot;logLik&quot;       &quot;numIter&quot;      &quot;groups&quot;       &quot;call&quot;         &quot;terms&quot;       
-[13] &quot;method&quot;       &quot;fitted&quot;       &quot;residuals&quot;    &quot;fixDF&quot;        &quot;na.action&quot;    &quot;data&quot;        </code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="indexamento" class="section level2">
-<h2>Indexamento</h2>
-<p>Uma característica fundamental em R (mas também em outras linguagens de programação) é poder acessar valores usando indexamento. Ou seja, usar a posição dentro do objeto (index, linha ou coluna) para poder realizar diferentes ações nos dados.</p>
-<p>Em vetores (1 dimensão), é possível acessar os valores usando index (1:length(x)).</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFyaWF2ZWxbNV1cblxuYGBgIn0= -->
-<pre class="r"><code>variavel[5]
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDVcbiJ9 -->
-<pre><code>[1] 5</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFyaWF2ZWxbNV0gIyDDumx0aW1vIGVsZW1lbnRvXG5gYGAifQ== -->
-<pre class="r"><code>variavel[5] # último elemento</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Em tabelas / matrizes, é possível fazer o mesmo através de colunas e linhas.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6MjB9LCJyZGYiOiJINHNJQUFBQUFBQUFBd3R5aVREaWl1QmlZR0JnWW1CbVpXUmdZZ1l5V1ppQUJDTURDd01uaUs1Z1lHQVdCaXRnWU9BRFlwSDlGeWJMaWExMHJOei9MT1ROenRMUHYvYmY1bzJMTC80aDRjRHdNdTZqay81Vit4TU9reE1mbFlqdWZ4SWFtdTJmZm1ULzMrQ1FKWmROVyswZmQvU3JzMXc2YmYvbGgvakJFMytNN0crNDN6VmNGOEM0LzltZjNYdTFaWlAybjlyZXNjblh3MkwvNyttcUp3OUVyN00vcnZob3N1V2hCZmE3MXh5VlAzenAxdjVOUi9pV0dRdWNzWDhTSjdodWx0WmMrMjhWeDU3RW1rYnZmL3EwZlp0UnNvTURZK2lNZ3FMOVFDY3k4NExjQ2ZZRVZURkt3TERscEphbDVoUURXUUpJb2h6SitYa2xSZms1cVdpcVdaTnpFb3ZSRmJPbEpTYVg1QmNCV2YvUWxlY2w1cWJDbEROQkJaa2lET0VzSXpRTm5FWDU1WG93VFNEdk16VXdnSUVJUkNIemZ6Uzd1VklTU3hMMTBvcUFXckRZejU1ZlVKS1pud2MwakFrVTk2eG9taG1MMEFUNFMvTkFscWZvSm1lVTVtWHJHb0lzZ0lZYkE5UkJqTkE0Z2JHWklGYXl3QnpHQ2d1VTFMejB6THhVV0VEa0pDYWw1a0E1ZkVCUGd2Mm9WMUNVbVZjQzh3bFF0Rml2Skw4a0VhYU9LemsvQnlZQzlodkRQd0NZQWs5bDZRSUFBQT09In0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["X1"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["X2"],"name":[2],"type":["fctr"],"align":["left"]}],"data":[{"1":"-0.2589793","2":"controle"},{"1":"-0.6978668","2":"controle"},{"1":"-0.4226910","2":"controle"},{"1":"2.1139506","2":"controle"},{"1":"0.1894707","2":"controle"},{"1":"-0.6354167","2":"controle"},{"1":"-1.8328444","2":"controle"},{"1":"0.6104198","2":"controle"},{"1":"1.3105695","2":"controle"},{"1":"0.3793862","2":"controle"},{"1":"-0.7183512","2":"controle"},{"1":"-0.2087260","2":"controle"},{"1":"-1.7244013","2":"controle"},{"1":"0.1807216","2":"controle"},{"1":"0.1081050","2":"controle"},{"1":"-0.0733041","2":"controle"},{"1":"0.6364830","2":"controle"},{"1":"1.4044866","2":"controle"},{"1":"-0.6842688","2":"controle"},{"1":"2.1667947","2":"controle"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[20]},"pages":{}}}
-  </script>
 </div>
-<!-- rnb-frame-end -->
+<div id="indexação" class="section level2">
+<h2>Indexação</h2>
+<p>Uma característica fundamental em R (mas também em outras linguagens de programação) é poder acessar valores usando indexação. Ou seja, usar a posição dentro do objeto (ordem, linha ou coluna) para poder extrair elementos ou realizar diferentes ações nos dados.</p>
+<p>Em vetores (1 dimensão), é possível acessar os valores usando index ou a ordem dos elementos (1:length(x)).</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFyaWF2ZWwgIyBvYmpldG9cbmBgYCJ9 -->
+<pre class="r"><code>variavel # objeto</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFyaWF2ZWxbMV0gIyBwcmltZWlybyBlbGVtZW50byBkbyBvYmpldG9cbmBgYCJ9 -->
+<pre class="r"><code>variavel[1] # primeiro elemento do objeto</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFyaWF2ZWxbNV0gIyDDumx0aW1vIGVsZW1lbnRvIGRvIG9iamV0b1xuYGBgIn0= -->
+<pre class="r"><code>variavel[5] # último elemento do objeto</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Em tabelas e matrizes, é possível fazer o mesmo através de colunas e linhas.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGFkb3NbLF1cbmBgYCJ9 -->
+<pre class="r"><code>dados[,]</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -1937,7 +1910,7 @@ class(modelo)
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUHJvZ3JhbWHDp8OjbyBlbSBSIgpzdWJ0aXRsZTogIlR1dG9yaWFsIDE6IGFsZ3VucyBwb250b3MgaW1wb3J0YW50ZXMgYSBjb25zaWRlcmFyIgphdXRob3I6ICJTYW11ZWwgQ2FybGVpYWwiCmRhdGU6ICJEZWNlbWJlciAyMDE5IgpvdXRwdXQ6CiAgd29yZF9kb2N1bWVudDogZGVmYXVsdAogIGh0bWxfbm90ZWJvb2s6IGRlZmF1bHQKLS0tCgojIEludHJvZHXDp8OjbwoKUiDDqSB1bWEgbGluZ3VhZ2VtIGRlIHByb2dyYW1hw6fDo28gbXVpdG8gZmxleMOtdmVsIGUgZGUgZsOhY2lsIGFwcmVuZGl6YWdlbSBwYXJhIGxlaWdvcyBlbSBjb21wdXRhw6fDo28uIFRhbHZleiBpbmljaWFsbWVudGUgYSBhcHJlbmRpemFnZW0gZGUgUiBwYXJhIGFxdWVsZXMgcXVlIGNvbWXDp2FtIGRvIHplcm8gw6kgbXVpdG8gbGVudGEuIFBvcsOpbSwgZ3JhZHVhbG1lbnRlIHNlIGFwcmVuZGUgUiBjb20gbWFpcyByYXBpZGV6IGUgZmFjaWxpZGFkZS4gUG9ydGFudG8sIHNlIGRpeiBxdWUgYSBsaW5oYSBkZSBhcHJlbmRpemFnZW0gZW0gUiDDqSBleHBvbmVuY2lhbCAodmVqYSBhIGZpZ3VyYSBhYmFpeG8pLgoKYGBge3IgZWNobz1GQUxTRX0KcGxvdChzZXEoNSwxMCwuMSksIGV4cChzZXEoNSwxMCwuMSkpLCAKICAgICB4YXh0PSJuIiwKICAgICB5YXh0PSJuIiwKICAgICBjb2w9IndoaXRlIiwgCiAgICAgeGxhYj0iVGVtcG8gaW52ZXN0aWRvIiwgCiAgICAgeWxhYj0iQXByZW5kaXphZ2VtIGRlIFIiLCB0eXBlPSJuIiwpCmxpbmVzKHNlcSg1LDEwLC4xKSwgZXhwKHNlcSg1LDEwLC4xKSksIGNvbCA9ICJyZWQiKQpgYGAKClIgw6kgdW1hIGxpbmd1YWdlbSBvcmllbnRhZGEgYSBvYmpldG9zLiBPdSBzZWphLCBuZWxhIG8gZm9jbyBzZSBkw6EgbmEgY3JpYcOnw6NvIGUgbWFuaXB1bGHDp8OjbyAob2J2aWFtZW50ZSkgZGUgKipvYmpldG9zKiogcXVlIHPDo28gY2FycmVnYWRvcyBuYSBzZXNzw6NvIGF0dWFsIGRvIFIsIGNvbnN1bWluZG8gYSBtZW3Ds3JpYSBjb3JyZW50ZSBkbyBjb21wdXRhZG9yIChSQU0pLgoKYGBge3J9CiMgRXhlbXBsbyBkZSBvYmpldG8gZW0gUgojICBvYmpldG9feCwgdW0gdmV0b3IgY29tcG9zdG8gcG9yIG7Dum1lcm9zIGludGVpcm9zCm9iamV0b194IDwtIGMoMSwyLDMsNCw1KQpvYmpldG9feApgYGAKCk5lc3RlIHR1dG9yaWFsLCBzZXLDo28gZGVzY3JpdG9zIGFsZ3VucyBwb250b3MgaW1wb3J0YW50ZXMgZSBjcnVjaWFpcyBkYSBsaW5ndWFnZW0gUiwgcXVlIHBvZGVtIHNlciBkZSBleHRyZW1hIGltcG9ydMOibmNpYSBuYSBhbsOhbGlzZSBlIG1hbmlwdWxhw6fDo28gZGUgZGFkb3MuCgojIyBDbGFzc2VzClRvZG8gZSBxdWFscXVlciBvYmpldG8gZW0gUiBkZXZlIHBlcnRlbmNlciBhIHVtYSBjbGFzc2UsIHF1ZSBwb3Igc3VhIHZleiBwb3NzdWkgZGlmZXJlbnRlcyBwcm9wcmllZGFkZXMuIEFzIGNsYXNzZXMgbWFpcyBjb211bnMgdXNhZGEgbnVtYSBhbsOhbGlzZSBkZSBkYWRvcyBzw6NvIG9zIGRhdGEuZnJhbWUgb3UgZGF0YS50YWJsZSAocGFyYSBjb25qdW50b3MgZGUgZGFkb3MpIG91IHZldG9yZXMgKHBhcmEgdmFyacOhdmVpcyBzaW5ndWxhcmVzKS4gRXhpc3RlbSBlbSBSIG11aXRhcyBvdXRyYXMgY2xhc3NlcyBlIHRpcG9zIGRlIG9iamV0b3MsIGNvbW8gbWF0cml6ZXMsIGFycmFuam9zLCBvYmpldG9zIHByb3ZlbmllbnRlcyBkZSBtb2RlbG9zIGVzdGF0w61zdGljb3MsIGV0Yy4KCmBgYHtyfQojIEV4ZW1wbG8gZGUgZGlmZXJlbnRlcyBvYmpldG9zIHF1ZSBwb2RlbSBleGlzdGlyIGVtIFIKZGFkb3MgPC0gZGF0YS5mcmFtZSgiWDEiID0gcm5vcm0oMjApLCAiWDIiID0gImNvbnRyb2xlIikKbWF0cml6IDwtIG1hdHJpeChkYXRhID0gMToyMCwgbmNvbCA9IDUpCnZhcmlhdmVsIDwtIG9iamV0b194CgpwYXN0ZSgiZGFkb3M6IiwgY2xhc3MoZGFkb3MpKQpwYXN0ZSgibWF0cml6OiIsIGNsYXNzKG1hdHJpeikpCnBhc3RlKCJ2YXJpYXZlbDoiLCBjbGFzcyh2YXJpYXZlbCkpCmBgYAoKIyMgVmV0b3JlcwoKRXNwZWNpZmljYW1lbnRlLCB2ZXRvcmVzIG91IHZhcmnDoXZlaXMgc2luZ3VsYXJlcyBwb2RlbSBhc3N1bWlyIGRpZmVyZW50ZXMgdGlwb3MsIGNvbW8gbsO6bWVyb3MgKGNvbnTDrW51b3Mgb3UgaW50ZWdyYWlzKSwgY2FyYWN0ZXJlcywgZmF0b3JlcywgZGF0YXMsIGV0Yy4gUGFyYSBkZWZpbmlyIHVtIHZldG9yLCB1c2Etc2UgYSBmdW7Dp8OjbyBjKCkgb25kZSBjYWRhIGVsZW1lbnRvIGRvIHZldG9yIGRldmUgc2VyIHNlcGFyYWRvIHBvciB2w61yZ3VsYXMuIEFsacOhcywgb3BlcmHDp8O1ZXMgdXNhbmRvIHZldG9yZXMgZ2VyYWxtZW50ZSBzw6NvIG11aXRvIGbDoWNlaXMgZGUgcmVhbGl6YXIsIGNvbW8gc29tYSwgbXVsdGlwbGljYcOnw6NvLCBldGMuIFZlamEgYWJhaXhvOgoKYGBge3J9CiMgbsO6bWVyb3MgY29udMOtbnVvcwpjbGFzcyhjKDAuNCwgMS4yLCAzLjcpKQpgYGAKCmBgYHtyfQojIG7Dum1lcm9zIGludGVncmFpcwpjbGFzcyhhcy5pbnRlZ2VyKGMob2JqZXRvX3gpKSkKYGBgCgpgYGB7cn0KIyBjYXJhY3RlcmVzCmNsYXNzKGMoImEiLCAiYiIsICJjIikpCmBgYAoKYGBge3J9CiMgZmF0b3JlcwpjbGFzcyhhcy5mYWN0b3IoYygiaG9tZW0iLCAibXVsaGVyIiwgImhvbWVtIikpKQpgYGAKCmBgYHtyfQojIGRhdGFzCmNsYXNzKGFzLkRhdGUoYygiMjAxOS0xMC0wMiIsICIyMDE5LTA3LTIyIiwgIjIwMTgtMTEtMDIiKSkpCmBgYAoKYGBge3J9CiMgb3BlcmHDp8OjbyB1c2FuZG8gdW0gdmV0b3IKcHJpbnQob2JqZXRvX3ggKiAxMCkKcHJpbnQob2JqZXRvX3ggKyBvYmpldG9feCkKYGBgCgpBZGljaW9uYWxtZW50ZSwgbW9kZWxvcyBsaW5lYXJlcyBwb2RlbSBjb250ZXIgbXVpdGFzIGluZm9ybWHDp8O1ZXMgZGlmZXJlbnRlcyBkZW50cm8gZGUgdW0gbWVzbW8gb2JqZXRvLiBQb3J0YW50bywgb2JqZXRvcyBwcm92ZW5pZW50ZXMgZGUgbW9kZWxvcyBsaW5lYXJlcyAoZXg6IGxtZSksIGNvbnTDqW0gZGVudHJlIG91dHJhcyBpbmZvcm1hw6fDtWVzLCB2YWxvcmVzIGRlIHAsIGNvZWZpY2llbnRlcyBkb3MgcHJlZGl0b3JlcywgZm9ybXVsYSBkbyBtb2RlbG8sIHBhcsOibWV0cm9zIGRhIGZvcm11bGEgdXNhZGEsIGV0Yy4gUGFyYSBpc3NvLCBlc3NlcyBvYmpldG9zIHPDo28gY29uc3RpdHXDrWRvcyBkZSBkaWZlcmVudGVzIGVsZW1lbnRvcywgcXVlIHBvZGVtIHNlciBpbnNwZWNpb25hZG9zIHVzYW5kbyBkaWZlcmVudGVzIG1hbmVpcmFzLgoKYGBge3IgbWVzc2FnZT1GQUxTRSwgd2FybmluZz1GQUxTRX0KIyBFeGVtcGxvIGRlIG1vZGVsbyBlIHN1YSBjbGFzc2UKbGlicmFyeSgibmxtZSIpCm1vZGVsbyA8LSBsbWUoZGlzdGFuY2UgfiBhZ2UsIGRhdGEgPSBPcnRob2RvbnQpCmNsYXNzKG1vZGVsbykKYGBgCgpgYGB7cn0KIyBFc3RydXR1cmEgZG8gbW9kZWxvLiBPIHF1ZSBleGlzdGUgZGVudHJvIGRvIG9iamV0byBtb2RlbG8gPyAKbmFtZXMobW9kZWxvKQpgYGAKCiMjIEluZGV4YW1lbnRvCgpVbWEgY2FyYWN0ZXLDrXN0aWNhIGZ1bmRhbWVudGFsIGVtIFIgKG1hcyB0YW1iw6ltIGVtIG91dHJhcyBsaW5ndWFnZW5zIGRlIHByb2dyYW1hw6fDo28pIMOpIHBvZGVyIGFjZXNzYXIgdmFsb3JlcyB1c2FuZG8gaW5kZXhhbWVudG8uIE91IHNlamEsIHVzYXIgYSBwb3Npw6fDo28gZGVudHJvIGRvIG9iamV0byAoaW5kZXgsIGxpbmhhIG91IGNvbHVuYSkgcGFyYSBwb2RlciByZWFsaXphciBkaWZlcmVudGVzIGHDp8O1ZXMgbm9zIGRhZG9zLgoKRW0gdmV0b3JlcyAoMSBkaW1lbnPDo28pLCDDqSBwb3Nzw612ZWwgYWNlc3NhciBvcyB2YWxvcmVzIHVzYW5kbyBpbmRleCAoMTpsZW5ndGgoeCkpLgoKYGBge3J9CnZhcmlhdmVsWzFdICMgcHJpbWVpcm8gZWxlbWVudG8KYGBgCgpgYGB7cn0KdmFyaWF2ZWxbNV0gIyDDumx0aW1vIGVsZW1lbnRvCmBgYAoKRW0gdGFiZWxhcyAvIG1hdHJpemVzLCDDqSBwb3Nzw612ZWwgZmF6ZXIgbyBtZXNtbyBhdHJhdsOpcyBkZSBjb2x1bmFzIGUgbGluaGFzLgoKYGBge3J9CmRhZG9zWyxdCmBgYAoKYGBge3J9CmRhZG9zWzEsMV0gIyBlbGVtZW50byBkYSBwcmltZWlyYSBsaW5oYSBlIGNvbHVuYQpgYGAK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUHJvZ3JhbWHDp8OjbyBlbSBSIgpzdWJ0aXRsZTogIlR1dG9yaWFsIDE6IHJlbGVtYnJhbmRvIG8gYsOhc2ljbyAocG9udG9zIGltcG9ydGFudGVzKSIKYXV0aG9yOiAiU2FtdWVsIENhcmxlaWFsIgpkYXRlOiAiRGVjZW1iZXIgMjAxOSIKb3V0cHV0OgogIHdvcmRfZG9jdW1lbnQ6IGRlZmF1bHQKICBodG1sX25vdGVib29rOiBkZWZhdWx0Ci0tLQoKIyBJbnRyb2R1w6fDo28KClIgw6kgdW1hIGxpbmd1YWdlbSBkZSBwcm9ncmFtYcOnw6NvIG11aXRvIGZsZXjDrXZlbCBlIGRlIGbDoWNpbCBhcHJlbmRpemFnZW0gcGFyYSBsZWlnb3MgZW0gY29tcHV0YcOnw6NvLiBUYWx2ZXogaW5pY2lhbG1lbnRlIGEgYXByZW5kaXphZ2VtIGRlIFIgcGFyYSBhcXVlbGVzIHF1ZSBjb21lw6dhbSBkbyB6ZXJvIMOpIG11aXRvIGxlbnRhLiBQb3LDqW0sIGdyYWR1YWxtZW50ZSBzZSBhcHJlbmRlIFIgY29tIG1haXMgcmFwaWRleiBlIGZhY2lsaWRhZGUuIFBvcnRhbnRvLCBzZSBkaXogcXVlIGEgbGluaGEgZGUgYXByZW5kaXphZ2VtIGVtIFIgw6kgZXhwb25lbmNpYWwgKHZlamEgYSBmaWd1cmEgYWJhaXhvKS4KCmBgYHtyIGVjaG89RkFMU0V9CnBsb3Qoc2VxKDUsMTAsLjEpLCBleHAoc2VxKDUsMTAsLjEpKSwgCiAgICAgeGF4dD0ibiIsCiAgICAgeWF4dD0ibiIsCiAgICAgY29sPSJ3aGl0ZSIsIAogICAgIHhsYWI9IlRlbXBvIGludmVzdGlkbyIsIAogICAgIHlsYWI9IkFwcmVuZGl6YWdlbSBkZSBSIiwgdHlwZT0ibiIsKQpsaW5lcyhzZXEoNSwxMCwuMSksIGV4cChzZXEoNSwxMCwuMSkpLCBjb2wgPSAicmVkIikKYGBgCgpSIMOpIHVtYSBsaW5ndWFnZW0gb3JpZW50YWRhIGEgb2JqZXRvcy4gT3Ugc2VqYSwgbmVsYSBvIGZvY28gc2UgZMOhIG5hIGNyaWHDp8OjbyBlIG1hbmlwdWxhw6fDo28gZGUuLi4gKipvYmpldG9zKiogKG9idmlhbWVudGUpIHF1ZSBzw6NvIGNhcnJlZ2Fkb3MgbmEgc2Vzc8OjbyBhdHVhbCBkbyBSLCBjb25zdW1pbmRvIGEgbWVtw7NyaWEgY29ycmVudGUgZG8gY29tcHV0YWRvciAoUkFNKS4KCmBgYHtyfQojIEV4ZW1wbG8gZGUgb2JqZXRvIGVtIFIKIyAgb2JqZXRvX3gsIHVtIHZldG9yIGNvbXBvc3RvIHBvciBuw7ptZXJvcyBpbnRlaXJvcwpvYmpldG9feCA8LSBjKDE1LDcsMjAsNCwxMikKb2JqZXRvX3gKYGBgCgpOZXN0ZSB0dXRvcmlhbCwgc2Vyw6NvIGRlc2NyaXRvcyBhbGd1bnMgcG9udG9zIGltcG9ydGFudGVzIGUgY3J1Y2lhaXMgZGEgbGluZ3VhZ2VtIFIsIHF1ZSBwb2RlbSBzZXIgZGUgZXh0cmVtYSBpbXBvcnTDom5jaWEgbmEgYW7DoWxpc2UgZSBtYW5pcHVsYcOnw6NvIGRlIGRhZG9zLgoKIyMgQ2xhc3NlcwpUb2RvIGUgcXVhbHF1ZXIgb2JqZXRvIGVtIFIgZGV2ZSBwZXJ0ZW5jZXIgYSB1bWEgY2xhc3NlLCBxdWUgcG9yIHN1YSB2ZXogcG9zc3VpIGRpZmVyZW50ZXMgcHJvcHJpZWRhZGVzLiBBcyBjbGFzc2VzIG1haXMgY29tdW5zIHVzYWRhcyBudW1hIGFuw6FsaXNlIGRlIGRhZG9zIHPDo28gdmV0b3JlcyAodmFyacOhdmVpcyBzaW5ndWxhcmVzKSBlIG9zIChjb25qdW50b3MgZGUgZGFkb3MpIGRhdGEuZnJhbWUgb3UgZGF0YS50YWJsZS4gRXhpc3RlbSBlbSBSIG11aXRhcyBvdXRyYXMgY2xhc3NlcyBlIHRpcG9zIGRlIG9iamV0b3MsIGNvbW8gbWF0cml6ZXMsIGFycmFuam9zLCBvYmpldG9zIHByb3ZlbmllbnRlcyBkZSBtb2RlbG9zIGVzdGF0w61zdGljb3MsIGV0Yy4KCmBgYHtyfQojIEV4ZW1wbG8gZGUgZGlmZXJlbnRlcyBvYmpldG9zIHF1ZSBwb2RlbSBleGlzdGlyIGVtIFIKZGFkb3MgPC0gZGF0YS5mcmFtZSgiWDEiID0gcm5vcm0oMjApLCAiWDIiID0gImNvbnRyb2xlIikKbWF0cml6IDwtIG1hdHJpeChkYXRhID0gMToyMCwgbmNvbCA9IDUpCnZhcmlhdmVsIDwtIG9iamV0b194CgpwYXN0ZSgiZGFkb3M6IiwgY2xhc3MoZGFkb3MpKQpwYXN0ZSgibWF0cml6OiIsIGNsYXNzKG1hdHJpeikpCnBhc3RlKCJ2YXJpYXZlbDoiLCBjbGFzcyh2YXJpYXZlbCkpCmBgYAoKIyMgVmV0b3JlcwoKVmV0b3JlcyAodmFyacOhdmVpcyBzaW5ndWxhcmVzKSBwb2RlbSBhc3N1bWlyIGRpZmVyZW50ZXMgdGlwb3MsIGNvbW8gbsO6bWVyb3MgKGNvbnTDrW51b3Mgb3UgaW50ZWdyYWlzKSwgY2FyYWN0ZXJlcywgZmF0b3JlcywgZGF0YXMsIGV0Yy4gUGFyYSBkZWZpbmlyIHVtIHZldG9yLCB1c2Etc2UgYSBmdW7Dp8OjbyBjKCkgb25kZSBjYWRhIGVsZW1lbnRvIGRvIHZldG9yIGRldmUgc2VyIHNlcGFyYWRvIHBvciB2w61yZ3VsYXMuIEFsacOhcywgb3BlcmHDp8O1ZXMgdXNhbmRvIHZldG9yZXMgZ2VyYWxtZW50ZSBzw6NvIG11aXRvIGbDoWNlaXMgZGUgcmVhbGl6YXIsIGNvbW8gc29tYSwgbXVsdGlwbGljYcOnw6NvLCBldGMuIFZlamEgYWJhaXhvOgoKYGBge3J9CiMgbsO6bWVyb3MgY29udMOtbnVvcwpjbGFzcyhjKDAuNCwgMS4yLCAzLjcpKQpgYGAKCmBgYHtyfQojIG7Dum1lcm9zIGludGVncmFpcwpjbGFzcyhhcy5pbnRlZ2VyKGMob2JqZXRvX3gpKSkKYGBgCgpgYGB7cn0KIyBjYXJhY3RlcmVzCmNsYXNzKGMoImEiLCAiYiIsICJjIikpCmBgYAoKYGBge3J9CiMgZmF0b3JlcwpjbGFzcyhhcy5mYWN0b3IoYygiaG9tZW0iLCAibXVsaGVyIiwgImhvbWVtIikpKQpgYGAKCmBgYHtyfQojIGRhdGFzCmNsYXNzKGFzLkRhdGUoYygiMjAxOS0xMC0wMiIsICIyMDE5LTA3LTIyIiwgIjIwMTgtMTEtMDIiKSkpCmBgYAoKYGBge3J9CiMgb3BlcmHDp8OjbyB1c2FuZG8gdW0gdmV0b3IKcHJpbnQob2JqZXRvX3ggKiAxMCkKcHJpbnQob2JqZXRvX3ggKyBvYmpldG9feCkKYGBgCgojIyBNb2RlbG9zIGVzdGF0w61zdGljb3MKIyMjIG9iamV0b3MgY29tIHVtIGNvbmp1bnRvIGRlIHZhcmnDoXZlaXMKCk1vZGVsb3MgbGluZWFyZXMgcHJvZHV6aWRvcyBwb3IgZnVuw6fDtWVzIGVtIFIgY29udMOpbSBkaWZlcmVudGVzIGluZm9ybWHDp8O1ZXMgcXVlIHBvZGVtIHNlciBhcm1hemVuYWRvcyBudW0gw7puaWNvIG9iamV0by4gT2JqZXRvcyBwcm92ZW5pZW50ZXMgZGUgbW9kZWxvcyBsaW5lYXJlcyAoZXg6IGxtZSksIGNvbnTDqW0gZGVudHJlIG91dHJhcyBpbmZvcm1hw6fDtWVzLCB2YWxvcmVzIGRlIHAsIGNvZWZpY2llbnRlcyBkb3MgcHJlZGl0b3JlcywgZsOzcm11bGEgZG8gbW9kZWxvLCBwYXLDom1ldHJvcyBkYSBmw7NybXVsYSB1c2FkYSwgZXRjLiBUYWlzIG9iamV0b3MgcG9kZW0gc2VyIGluc3BlY2lvbmFkb3MgdXNhbmRvIGRpZmVyZW50ZXMgbWFuZWlyYXMuCgpgYGB7ciBtZXNzYWdlPUZBTFNFLCB3YXJuaW5nPUZBTFNFfQojIEV4ZW1wbG8gZGUgbW9kZWxvIGUgc3VhIGNsYXNzZQpsaWJyYXJ5KCJubG1lIikKbW9kZWxvIDwtIGxtZShkaXN0YW5jZSB+IGFnZSwgZGF0YSA9IE9ydGhvZG9udCkKY2xhc3MobW9kZWxvKQpgYGAKCmBgYHtyfQojIEVzdHJ1dHVyYSBkbyBtb2RlbG8uIE8gcXVlIGV4aXN0ZSBkZW50cm8gZG8gb2JqZXRvICJtb2RlbG8iID8gCm5hbWVzKG1vZGVsbykKYGBgCgojIyBJbmRleGHDp8OjbwoKVW1hIGNhcmFjdGVyw61zdGljYSBmdW5kYW1lbnRhbCBlbSBSIChtYXMgdGFtYsOpbSBlbSBvdXRyYXMgbGluZ3VhZ2VucyBkZSBwcm9ncmFtYcOnw6NvKSDDqSBwb2RlciBhY2Vzc2FyIHZhbG9yZXMgdXNhbmRvIGluZGV4YcOnw6NvLiBPdSBzZWphLCB1c2FyIGEgcG9zacOnw6NvIGRlbnRybyBkbyBvYmpldG8gKG9yZGVtLCBsaW5oYSBvdSBjb2x1bmEpIHBhcmEgcG9kZXIgZXh0cmFpciBlbGVtZW50b3Mgb3UgcmVhbGl6YXIgZGlmZXJlbnRlcyBhw6fDtWVzIG5vcyBkYWRvcy4KCkVtIHZldG9yZXMgKDEgZGltZW5zw6NvKSwgw6kgcG9zc8OtdmVsIGFjZXNzYXIgb3MgdmFsb3JlcyB1c2FuZG8gaW5kZXggb3UgYSBvcmRlbSBkb3MgZWxlbWVudG9zICgxOmxlbmd0aCh4KSkuCgoKYGBge3J9CnZhcmlhdmVsICMgb2JqZXRvCmBgYAoKYGBge3J9CnZhcmlhdmVsWzFdICMgcHJpbWVpcm8gZWxlbWVudG8gZG8gb2JqZXRvCmBgYAoKYGBge3J9CnZhcmlhdmVsWzVdICMgw7psdGltbyBlbGVtZW50byBkbyBvYmpldG8KYGBgCgpFbSB0YWJlbGFzIGUgbWF0cml6ZXMsIMOpIHBvc3PDrXZlbCBmYXplciBvIG1lc21vIGF0cmF2w6lzIGRlIGNvbHVuYXMgZSBsaW5oYXMuCgpgYGB7cn0KZGFkb3NbLF0KYGBgCgpgYGB7cn0KZGFkb3NbMSwxXSAjIGVsZW1lbnRvIGRhIHByaW1laXJhIGxpbmhhIGUgY29sdW5hCmBgYAo=</div>
 
 
 

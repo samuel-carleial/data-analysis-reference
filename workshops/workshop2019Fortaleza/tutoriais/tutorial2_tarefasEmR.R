@@ -1,5 +1,6 @@
 ################################################################################
-# TUTORIAL: Como checar os seus dados ?
+# (para resolver) 
+# TUTORIAL 2: Tarefas comuns e como checar dados em R ?
 ################################################################################
 
 data("iris")
@@ -11,45 +12,45 @@ head(PlantGrowth)
 ################################################################################
 # Encontrar valores
 ################################################################################
-## Para valores de comprimento de sépalas, 
-## quais observacoes são superiores a 5 cm ?
+## (1) Para valores de comprimento de sépalas, 
+## quais observações são superiores a 5 cm ?
 
 
-## Para valores de comprimento de pépalas, 
-## quais observacoes sao iguais a 1.5 ou inferiores a 1 cm ?
+## (2) Para valores de comprimento de pétalas, 
+## quais observações são iguais a 1.5 ou inferiores a 1 cm ?
 
 
-## Que espécies tem largura da sépala exatamente igual a 3 ?
+## (3) Que espécies têm largura de sépala exatamente igual a 3 ?
 
 
-## Existem observacoes incompletas ou faltantes ?
+## (4) Existem observações incompletas ou faltantes ?
 
 
 ################################################################################
 # Sumarizar valores
 ################################################################################
-## Qual é o valor de média, mediana, desvio e erro padrao para 
+## (5) Qual é o valor de média, mediana, desvio e erro padrão para 
 ## comprimento de sépalas ?
 
 
-## Como obter valores de centro e dispersao para todos os dados ?
+## (6) Como obter valores de centro e dispersão para todos os dados ?
 
 
-## Como tabelar os valores para especie ou tratamento nos dois conjuntos de dados?
-## Nota: essas variáveis nao sao continuas, elas sao categoricas.
+## (7) Como tabelar os valores para espécie ou tratamento nos dois conjuntos de dados?
+## Nota: essas variáveis não são contínuas, elas são categóricas.
 
 
-## Como calcular o valor total de massa para as plantas medidas em PlantGrowth ?
+## (8) Como calcular o valor total de massa para as plantas medidas em PlantGrowth ?
 
 
 ################################################################################
 # Substituir valores
 ################################################################################
-## A espécie descrita como setosa na verdade se chama ungulata, como mudar os 
-## valores nos dados ?
+## (9) A espécie descrita como setosa na verdade se chama ungulata, como mudar 
+## isso no conjunto de dados ?
 
 
-## Em PlantGrowth, assumimos que valores de massa inferiores a 4.5 sao impossiveis,
+## (10) Em PlantGrowth, assumimos que valores de massa inferiores a 4.5 são irreais,
 ## como corrigir isso nos dados ? Todos valores iguais ou inferiores a 4.5 devem
 ## ser dados faltantes
 
@@ -57,31 +58,34 @@ head(PlantGrowth)
 ################################################################################
 # Calcular valores
 ################################################################################
-## Como calcular o valor proporcional para sepálas ?
+## (11) Como calcular o valor proporcional para sepálas ?
 
 
-## Como transformar a largura de pétalas para raiz quadrada, log natural ou exponecial
+## (12) Como transformar a largura de pétalas para raiz quadrada, log natural ou exponecial
 
 
-## Como calcular a soma de valores por colunas ou linhas
+## (13) Como calcular a soma de valores por colunas ou linhas
 
 
 ################################################################################
 # Repartir dados
 ################################################################################
-## Como separar dados por espécies ?
+## (14) Como separar dados por espécies ?
 
 
-## Como separar dados por massa de plantas em três grupos 
-## com mesmo numero de observacoes ?
-
+## (15) Como separar dados de massa de plantas em três grupos que representem
+## valores de peso em categorias ? PlantGrowth
 
 
 ################################################################################
 # Repetir tarefas
 ################################################################################
-## Loops
+## (16) Loops: faça um exemplo simple de loop. 
+## Caso queira tente resolver também o problema seguinte:
+## Usando o conjunto de dados iris, crie um novo conjunto de dados chamado iris2
+## onde cada valor deve ser substituido pelo seu tipo de variável, por exemplo:
+## 1 deve ser numeric e "setosa" deve ser character.
 
 
-## Repetir tarefas sobre listas ou tabelas
+## (17) Repetir tarefas sobre listas ou tabelas
 
