@@ -3,17 +3,22 @@ A codebase reference guide for the most common types of analysis in data science
 
 Language: R
 
-Main topics:
+Topic sections:
 - Clustering
 - Data inspection
-- Data visualization (maps)		
 - Imputation			
 - Modelling: (multi-)linear (mixed) models
 - Modelling: validating statistical models
 - Modelling: robust regression
-- Modelling: zero inflation
 - Path analysis
-- Prediction of effects
+- Prediction of model effects
 - Randomization
-- Regression to the mean (RTM)
-- Repeated measures
+
+Topic sections coming next:
+- (not available)Modelling: zero inflation
+- (not available)Data visualization (maps)
+- (not available)Regression to the mean (RTM)
+- (not available)Repeated measures
+
+Courses:
+- 2019 Labomar, University of Ceará (Brazil)
