@@ -1,10 +1,13 @@
 # Reference guide to statistical analysis
 ## Path analysis
 
-Path analyses are used when we want to assess the network relationship between several variables that are timely ordered (must not cause each other) and go into one final direction. There are plenty of tutorials in R that show how to code simple path analysis models. They basically use the lavaan and semPlot packages. The first is used to fit the model, based on the whole dataset or a covariance matrix. The second is used to plot a visual representation of the model with arrows indicating the directions with their respective effects.
+General introduction:
+Path analyses are used when we want to assess the causal relationship (network) among several variables, usually graphically representing it in a diagram of variables and arrows. It can be seen as a closed system of nested relationships assumed to be causal, linear and additive. Actually, the assumptions for a path analysis prety much are a copy of a those from linear regression, given that path analyses do rely on linear regressions to assess the importance of the relationships. Besides, the relationships assessed in a path analysis model should be timely ordered, and they should go into one direction. That is, path analyses are recursive (i.e., do not allow feedback loops or reciprocal causes). Regarding the variables included in a path analysis, these might be of two types: exogenous (X: the independent variables which might have correlations among each other Xs) or endogenous (Y: the dependent variable). Exogenous variables might be continuous, binomial or categorical and should have been measured without error, whereas as endogenous variables are coupled with error terms that are uncorrelated with other error terms.
 
-General steps in a path analysis:
+Path analysis in R:
+There are plenty of tutorials that show how to code simple path analysis models in R. They basically use the **lavaan** and **semPlot** packages. The first is used to fit the model, based on the whole dataset or a covariance matrix. The second is used to plot a visual representation of the model with arrows indicating the directions with their respective effects.
 
+General steps of a path analysis in R:
 1- select dataset + variables
 2- build correlation matrix
 3- calculate the sample size for complete cases (no NAs)
