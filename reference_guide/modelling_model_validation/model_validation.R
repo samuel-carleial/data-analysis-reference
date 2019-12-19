@@ -2,6 +2,8 @@
 set.seed(23574)
 rm(list = ls())
 
+library(ggfortify)
+
 ?hatvalues
 ?influence.measures
 ?DHARMa
@@ -83,7 +85,7 @@ dispersiontest(mod1)
 # Poisson is a bad model:
 library(car)
 influencePlot(mod1)
-
+cor.test()
 # 5- Check for zero inflation by fitting a count data model and its zeroinflated 
 # / hurdle counterpart and compare them (usually with AIC). Here a zero inflated 
 # model would fit better than the simple Poisson (again probably due to overdispersion):
@@ -225,6 +227,8 @@ influence <- influence.measures(mod1)
 summary(influence)
 lm.influence(mod1) # for linear models
 
+# Model diagnostics using boot ------------------------------------------
+
 library(boot)
 glm.diag.plots(mod1, iden = TRUE, ret = TRUE)
 
@@ -233,8 +237,6 @@ glm.diag.plots(mod1, iden = TRUE, ret = TRUE)
 ?DHARMa
 library(DHARMa)
 vignette("DHARMa", package="DHARMa")
-
-
 
 
 # END ---------------------------------------------------------------------

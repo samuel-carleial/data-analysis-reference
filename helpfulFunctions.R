@@ -33,8 +33,8 @@ sixPlot <- function(x) {
   screen(1)
   hist(x,
        main = "Histogram", xlab = "concentration of values", ylab = "density",
-       probability = TRUE, 
-       ylim = c(0,1)
+       probability = TRUE 
+       #,ylim = c(0,1)
        )
   lines(density(x), col = "red")
   
