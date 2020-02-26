@@ -3,6 +3,7 @@
 ################################################################################
 
 set.seed(12345)
+
 library("blmeco")
 library("lme4")
 library("nlme")
@@ -68,6 +69,7 @@ lsmeans(m1_glm, list(pairwise ~ feed), adjust = c("tukey"))
 
 # Intervalos de confianca
 # note que apenas a ultima racao foi nao significativa
+summary(m1_glm)
 confint(m1_glm)
 confint(m1_aov)
 
@@ -102,7 +104,9 @@ summary(fit2)
 rootogram(fit2)
 
 # modelo linear
-m2_glm <- glm(decrease ~ treatment, family = "poisson", data = OrchardSprays)
+m2_glm <- glm(decrease ~ treatment
+              , family = "poisson"
+              , data = OrchardSprays)
 
 # sumário e diagnótico
 par(mfrow = c(2,2))
@@ -118,7 +122,11 @@ autoplot(m2_glm,
   theme(legend.position = "none")
 
 # modelo linear misto
-m2_glmm <- glmer(decrease ~ treatment + (1|rowpos), family = "poisson", data = OrchardSprays)
+m2_glmm <- glmer(decrease ~ 
+                   treatment 
+                 + (1|rowpos)
+                 , family = "poisson"
+                 , data = OrchardSprays)
 summary(m2_glmm)
 plot(m2_glmm)
 
@@ -133,7 +141,7 @@ plot(allEffects(m2_glm))
 # carregar dados
 data("Arabidopsis")
 help("Arabidopsis")
-tail(Arabidopsis)
+head(Arabidopsis)
 
 # visualização prévia
 names(Arabidopsis)
@@ -216,7 +224,7 @@ head(dados)
 
 # produzir modelo
 m4_glm <- glm(resposta ~ preditor 
-              , family = binomial(link=logit)
+              , family = binomial
               , data = dados)
 
 # verificar modelo
@@ -248,7 +256,7 @@ lines(sort(preditor)
 # usando o pacote effects
 plot(allEffects(m4_glm))
 
-
+data()
 
 ################################################################################
 
