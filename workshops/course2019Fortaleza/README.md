@@ -1,7 +1,8 @@
-Disciplina: Análise de dados em R - uma abordagem prática para analise, visualização e modelagem
-Professor: Samuel Carleial Fernandes
-Data: 18-19 Dezembro 2019
-Local: Labomar (UFC)
+#Disciplina: Análise de dados em R - uma abordagem prática para analise, visualização e modelagem
+
+##Professor: Samuel Carleial Fernandes
+##Data: 18-19 Dezembro 2019
+##Local: Labomar (UFC)
 
 Conteúdo:
  DIA 1
