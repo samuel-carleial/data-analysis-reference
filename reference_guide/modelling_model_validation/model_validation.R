@@ -3,6 +3,8 @@ set.seed(23574)
 rm(list = ls())
 
 library(ggfortify)
+library(gvlma)
+library(stargazer)
 
 ?hatvalues
 ?influence.measures
@@ -18,11 +20,15 @@ library(ggfortify)
 m <- lm(Petal.Width ~ 
           + Petal.Length
         , data = iris)
+# summary
+stargazer(m, type = 'text')
+# check model fit assumptions
+gvlma(m)
 # create plots with one line
 autoplot(m, which = 1:6, ncol = 2, label.size = 3)
-# use groups to highlight observations (ex: "Species")
+# use groups to highlight observations (ex: 'Species')
 autoplot(m, which = 1:6, label.size = 3, data = iris,
-         colour = "Species")
+         colour = 'Species')
 
 # Generalized Linear Models (glm)
 # compute a linear model using USArrests data
@@ -34,7 +40,7 @@ m <- glm(Murder ~
          , data = USArrests)
 # create plots with one line
 autoplot(m, which = 1:6, ncol = 2, label.size = 3,
-         colour = "steelblue") + theme_bw()
+         colour = 'steelblue') + theme_bw()
 
 # Observations: autoplot use the ggplot syntax. This means that all functions
 # in ggplot, such as theme(), labs() and so on should work. However, pay attention
@@ -60,9 +66,9 @@ rootogram(fit)
 # which speaks for a negative binomial distribution):
 Ord_plot(quine$Days)
 
-# or iuse with the "XXXXXXness" plots where XXXXX is the distribution of choice,
-# say Poissoness plot (which speaks against Poisson, try also type="nbinom"):
-distplot(quine$Days, type="poisson")
+# or iuse with the 'XXXXXXness' plots where XXXXX is the distribution of choice,
+# say Poissoness plot (which speaks against Poisson, try also type='nbinom'):
+distplot(quine$Days, type='poisson')
 
 # 2- Inspect usual goodness-of-fit measures (such as likelihood ratio statistics 
 # vs. a null model or similar):
@@ -70,9 +76,9 @@ mod1 <- glm(Days ~
               + Age
               + Sex
             , data = quine
-            , family = "poisson")
+            , family = 'poisson')
 summary(mod1)
-anova(mod1, test = "Chisq")
+anova(mod1, test = 'Chisq')
 
 # 3- Check for over/underdispersion by looking at residual deviance/df or at a 
 # formal test statistic (e.g., see this answer). Here we have clearly overdispersion:
@@ -94,7 +100,7 @@ mod2 <- zeroinfl(Days ~
                    + Age
                    + Sex
                  , data = quine
-                 , dist = "poisson")
+                 , dist = 'poisson')
 AIC(mod1, mod2)
 
 # 6- Plot the residuals (raw, deviance or scaled) on the y-axis vs. the (log) 
@@ -103,7 +109,7 @@ AIC(mod1, mod2)
 # normal (speaking against the Poisson; Edit: @FlorianHartig's answer suggests 
 # that normality of these residuals is not to be expected so this is not a 
 # conclusive clue):
-res <- residuals(mod1, type = "deviance")
+res <- residuals(mod1, type = 'deviance')
 plot(log(predict(mod1)), res)
 abline(h = 0, lty = 2)
 qqnorm(res)
@@ -125,13 +131,13 @@ halfnorm(residuals(mod1))
 plot(Days ~ 
        + Age
      , data = quine) 
-prs  <- predict(mod1, type = "response", se.fit = TRUE)
-pris <- data.frame("pest" = prs[[1]]
-                   , "lwr" = prs[[1]] - prs[[2]]
-                   , "upr" = prs[[1]] + prs[[2]])
-points(pris$pest ~ quine$Age, col = "red")
-points(pris$lwr  ~ quine$Age, col = "pink", pch = 19)
-points(pris$upr  ~ quine$Age, col = "pink", pch = 19)
+prs  <- predict(mod1, type = 'response', se.fit = TRUE)
+pris <- data.frame('pest' = prs[[1]]
+                   , 'lwr' = prs[[1]] - prs[[2]]
+                   , 'upr' = prs[[1]] + prs[[2]])
+points(pris$pest ~ quine$Age, col = 'red')
+points(pris$lwr  ~ quine$Age, col = 'pink', pch = 19)
+points(pris$upr  ~ quine$Age, col = 'pink', pch = 19)
 
 # model diagnostics 2 ---------------------------------------------------------
 
@@ -159,7 +165,7 @@ points(pris$upr  ~ quine$Age, col = "pink", pch = 19)
 AIC(mod1, mod2, mod3)
 
 # summaryzing estimates for the model
-drop1(mod1, test="Chi")
+drop1(mod1, test='Chi')
 summary(mod1)
 logLik(mod1)
 coefficients(mod1)
@@ -175,24 +181,24 @@ identical(mod1$residuals, residuals.glm(mod1))
 identical(mod1$residuals, residuals(mod1))
 identical(mod1$residuals, resid(mod1))
 
-identical(sresid, resid(mod1, type="deviance"))
-identical(sresid, resid(mod1, type="pearson"))
-identical(sresid, resid(mod1, type="working"))
-identical(sresid, resid(mod1, type="response"))
-identical(sresid, resid(mod1, type="partial"))
+identical(sresid, resid(mod1, type='deviance'))
+identical(sresid, resid(mod1, type='pearson'))
+identical(sresid, resid(mod1, type='working'))
+identical(sresid, resid(mod1, type='response'))
+identical(sresid, resid(mod1, type='partial'))
 
-identical(residu, resid(mod1, type="deviance")) # this one
-identical(residu, resid(mod1, type="pearson"))
-identical(residu, resid(mod1, type="working")) 
-identical(residu, resid(mod1, type="response"))
-identical(residu, resid(mod1, type="partial"))
+identical(residu, resid(mod1, type='deviance')) # this one
+identical(residu, resid(mod1, type='pearson'))
+identical(residu, resid(mod1, type='working')) 
+identical(residu, resid(mod1, type='response'))
+identical(residu, resid(mod1, type='partial'))
 
 # assumption1: normality of residuals
 par(mfrow=c(1,3))
-hist(residu, main="model residuals")
-hist(sresid, main="standardized residuals")
+hist(residu, main='model residuals')
+hist(sresid, main='standardized residuals')
 qqnorm(sresid, cex = 1.75, pch = 21)
-qqline(sresid, lty = 2, lwd = 2, col = "red")
+qqline(sresid, lty = 2, lwd = 2, col = 'red')
 
 # assumption2: homocedasticity
 par(mfrow=c(2,2))
@@ -203,11 +209,11 @@ plot(sresid ~ quine$Age)
 plot(sresid ~ quine$Sex)
 
 # assumption3: collinearity
-pairs(d[, c("edu", "ag_yrs")], panel = panel.smooth)
+pairs(d[, c('edu', 'ag_yrs')], panel = panel.smooth)
 d %>%  
   dplyr::select(age, child, lperp, con_mil, ec_int, edu, ag_yrs, ptsd_ss, dep_ss) %>% 
-  # method: "kendall", "spearman", "pearson"
-  cor(method = "pearson", use = "pairwise.complete.obs") %>% 
+  # method: 'kendall', 'spearman', 'pearson'
+  cor(method = 'pearson', use = 'pairwise.complete.obs') %>% 
   round(2)
 
 # variance inflation factors (VIFs)
@@ -219,8 +225,8 @@ car::vif(mod1)
 car::durbin.watson(mod1)
 car::durbinWatsonTest(mod1)
 # visually check autocorrelated datapoints  with the auto-correlation function
-acf(sresid, main = "auto-correlation plot")
-Box.test(sresid, lag = 28, fitdf = 5, type = "Ljung") # if p < .5 it suggests the data is autocorrelated
+acf(sresid, main = 'auto-correlation plot')
+Box.test(sresid, lag = 28, fitdf = 5, type = 'Ljung') # if p < .5 it suggests the data is autocorrelated
 
 # outliers
 influence <- influence.measures(mod1)
@@ -236,7 +242,7 @@ glm.diag.plots(mod1, iden = TRUE, ret = TRUE)
 
 ?DHARMa
 library(DHARMa)
-vignette("DHARMa", package="DHARMa")
+vignette('DHARMa', package='DHARMa')
 
 
 # END ---------------------------------------------------------------------
