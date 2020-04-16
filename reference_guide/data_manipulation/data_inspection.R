@@ -92,7 +92,7 @@ sixPlot(x1)
 # include the points in the extremes, which are exactly the outliers. A boxplot
 # has 5 basic elements: min value, quartile 1 (Q1), quartile 2 (median), 
 # quartile 3 (Q3), max value. IQR is the inter-quartile range, defined by 
-# Q3 - Q1. The 'fences' are the cutt-offs that delimit lower and upper outliers.
+# Q3 - Q1. The "fences" are the cutt-offs that delimit lower and upper outliers.
 # They are the bars in the extremes of boxplots. After those we find the outliers.
 # The formula IQ1 - 1.5*IQR and  IQ3 + 1.5*IQR define lower and upper outliers,
 # respectively.
@@ -104,18 +104,19 @@ boxplot.stats(x4)$out # find out outliers
 x4[!x4 %in% boxplot.stats(x4)$out] # filter out outliers
 
 ## missing values or NAs
+library("mice")
 is.na(x1)
 which(is.na(x2))
 which(is.na(x4))
-
-##
+md.pattern(airquality, rotate.names = TRUE)
 
 
 ###########################################################################
 # Inspect variables: multiple variables -----------------------------------
 ###########################################################################
 
-library(blmeco)
+library("blmeco")
+library("corrplot")
 data("frogs")
 head(frogs)
 
@@ -130,9 +131,13 @@ corr_matrix2 <- Hmisc::rcorr(as.matrix(frogs[ ,1:7]))
 corr_matrix2
 
 ## interaction among variables: correlation plot and visualization
-corrplot::corrplot(corr_matrix1, type = "upper", order = "hclust", tl.col = "black", tl.srt = 45)
+corrplot(corr_matrix1, type = "upper", order = "hclust", tl.col = "black", tl.srt = 45)
 heatmap(x = corr_matrix1, symm = TRUE)
 
-##
-
-
+## explore data
+## EDA: exploratory data analysis
+library(DataExplorer)
+help(DataExplorer)
+DataExplorer::introduce(frogs)
+DataExplorer::create_report(frogs)
+DataExplorer::plot_correlation(frogs)

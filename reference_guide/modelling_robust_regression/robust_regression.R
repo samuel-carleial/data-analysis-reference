@@ -2,6 +2,11 @@
 set.seed(12345)
 rm(list = ls())
 
+
+# ref
+# http://www.alastairsanderson.com/R/tutorials/robust-regression-in-R/
+
+
 # Robust Analyses
 # MM-type Estimators for Linear Regression
 # install.packages('robustbase', dependencies = TRUE)

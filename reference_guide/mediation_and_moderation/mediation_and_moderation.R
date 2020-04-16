@@ -43,6 +43,7 @@ rm(Y, X, M, temp, fit.MX, fit.YMX, fitmed)
 # to basically test the effect of an interaction between two predictors on an outcome
 # it assumes the effect of X being altered (moderated) by Z on an outcome Y
 
+# EXAMPLE 1
 Y <- 'outcome'
 X <- 'main_predictor'
 Z <- 'moderator'
@@ -62,8 +63,14 @@ summary(fit.YZcXc)
 # plot/visualize moderation effect
 plotSlopes(fit.YZcXc, plotx = "Xc", modx = "Zc", xlab = X, ylab = Y, modxVals = "std.dev")
 
+# EXAMPLE 2
+# NOTE: does not allow for setting a different outcome distribution other than Gaussian
+fit.mod <- moderate.lm(x = X, z = Z, y = Y, data = temp)
+summary(fit.mod)
+sim.slopes(fit.mod, temp$Z)
+
 # clean up
-rm(Y, X, Z, temp, fit.YZcXc)
+rm(Y, X, Z, temp, fit.YZcXc, fit.mod)
 
 
 # END ---------------------------------------------------------------------
