@@ -105,17 +105,24 @@ x4[!x4 %in% boxplot.stats(x4)$out] # filter out outliers
 
 ## missing values or NAs
 library("mice")
+
 is.na(x1)
 which(is.na(x2))
 which(is.na(x4))
 md.pattern(airquality, rotate.names = TRUE)
 
+na.fail(x4)
+na.omit(x4)
+na.exclude(x4)
+na.pass(x4)
 
 ###########################################################################
 # Inspect variables: multiple variables -----------------------------------
 ###########################################################################
 
 library("blmeco")
+library("GGally")
+library("Hmisc")
 library("corrplot")
 data("frogs")
 head(frogs)
@@ -123,11 +130,11 @@ head(frogs)
 ## pairwise comparisons
 pairs(frogs)
 plot(frogs)
-GGally::ggpairs(frogs[ ,1:7])
+ggpairs(frogs[ ,1:7])
 
 ## interaction among variables: correlation matrix
 corr_matrix1 <- cor(frogs[ ,1:7])
-corr_matrix2 <- Hmisc::rcorr(as.matrix(frogs[ ,1:7]))
+corr_matrix2 <- rcorr(as.matrix(frogs[ ,1:7]))
 corr_matrix2
 
 ## interaction among variables: correlation plot and visualization
@@ -136,7 +143,7 @@ heatmap(x = corr_matrix1, symm = TRUE)
 
 ## explore data
 ## EDA: exploratory data analysis
-library(DataExplorer)
+library("DataExplorer")
 help(DataExplorer)
 DataExplorer::introduce(frogs)
 DataExplorer::create_report(frogs)
