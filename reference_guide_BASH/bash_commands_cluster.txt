@@ -1,0 +1,186 @@
+#######################################################################
+### LOGIN TO CLUSTER
+
+(John Dounat)
+ssh -X kn_pop501249@bwunicluster.scc.kit.edu
+
+(Miriam Mars)
+ssh -X kn_pop212883@bwunicluster.scc.kit.edu
+
+
+#######################################################################
+### MOVE BETWEEN FOLDERS ($WORKING, $HOME, $TMP)
+
+ls -l
+cd ..
+cd ~/WORKING
+
+cd /pfs/work2/workspace/scratch/kn_pop501249-archiveData-0
+cd /pfs/work2/workspace/scratch/kn_pop501249-SocialAnalyses-0
+
+
+#######################################################################
+### ALLOCATE, I.E., CREATE FOLDERS
+
+ws_allocate <folderName> <dayDuration>
+ws_list -a
+ws_extend
+ws_release
+
+mkdir test1
+
+
+#######################################################################
+### GRANT PERMISSIONS AND SHARE WORKSPACE (via ACL, Access Control Lists)
+
+### see permissions
+getfacl $<my_workspace>
+getfacl $(ws_find SocialAnalysis)
+getfacl /pfs/work2/workspace/scratch/kn_pop501249-archiveData-0/
+
+### grant one user permission to specific folder (read-only)
+setfacl -Rm u:<user>:rX,d:u:<user>:rX $my_workspace
+setfacl -Rm u:kn_pop212883:rX,d:u:kn_pop212883:rX /pfs/work2/workspace/scratch/kn_pop501249-archiveData-0/
+
+### grant one user permission to specific folder (read + write)
+setfacl -Rm u:<user>:rwX,d:u:<user>:rwX $my_workspace
+setfacl -Rm u:kn_pop212883:rwX,d:u:kn_pop501249:rwX /pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0
+
+### remove permissions
+setfacl -Rb $my_workspace
+
+
+#######################################################################
+### SECURE COPY LOCAL ----> BWUNICLUSTER
+### NOTE: you should not be signed-in to the cluster
+scp <from local laptops path> <to cluster path>
+scp ~/<path>/<filename> kn_pop501249@bwunicluster.scc.kit.edu:/<path>/<filename>
+
+### recursively upload files
+scp -r /Users/../*.png kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/.../destination
+
+
+#######################################################################
+# SECURE COPY BWUNICLUSTER ----> LOCAL
+# NOTE: you should not be signed-in to the cluster
+# scp <from cluster path> <to  path in local laptop>
+# scp kn_pop501249@bwunicluster.scc.kit.edu:<path>/<filename> ~/temp/<filename>
+
+scp kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-test1-0/trial1/test1.R ~/temp/fitus.R
+scp -r kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job1/* ~/temp/
+
+
+#######################################################################
+### ENVIRONMENT MODULES
+module -l avail
+module avail R
+module load category/softwarename/version
+module load math/R
+module unload category/softwarename/version
+module list
+
+### COPY MODULE EXAMPLES TO HOME FOLDER TO EDIT THEM
+### module load <category/softwarename>
+module load math/R
+
+(Code below was not yet tested)
+cp -R $SWN_EXA_DIR
+
+
+#######################################################################
+### RUN R CODE IN COMMAND LINE
+### R CMD BATCH <script.R>
+R CMD BATCH test1.R
+
+### Install manually a package
+R CMD INSTALL <package source.tar.gz/tgz>
+R CMD INSTALL readr_1.3.1.tar.gz >& logfile.txt
+
+
+#######################################################################
+### JOB SUBMISSION
+### Submits a job and queues it in an input queue [msub].
+### For manual, use "man msub"
+
+msub -q singlenode -N test1 job.sh
+
+
+#######################################################################
+### MSUB EXAMPLES
+msub  -I  -V  -l nodes=1:ppn=1,pmem=5000mb -l walltime=0:02:00:00
+msub  -I  -V  -l nodes=1:ppn=1 -l walltime=0:02:00:00
+msub -q singlenode -N test -l nodes=1:ppn=1,walltime=3:00:00,pmem=5000mb job.sh
+
+### Apparently #MSUB and #MOAB can be used interchangeably inside the job script (a bash file *.sh)
+### Instead of using parameters after the "msub" command, #MSUB parameters can be added inside the
+### job file, as follows:
+
+#MSUB -l nodes=1:ppn=1
+#MSUB -l walltime=3:00:00
+#MSUB -l pmem=200000mb (max: 64000mb)
+#MSUB -N test
+
+### And then run the command below (*command line overrule script options)
+msub -q fat job.sh
+
+
+#######################################################################
+### CHECK CLUSTER CURRENT USE AND JOB STATUSES (MOAB commands)
+
+showq 		Displays information about active, eligible, blocked, and/or recently completed jobs [showq]
+
+checkjob 	Displays detailed job state information [checkjob]
+showbf 	Shows what resources are available for immediate use [showbf]
+showstart 	Returns start time of submitted job or requested resources [showstart]
+canceljob 	Cancels a job (opsoleted!) [canceljob]
+mjobctl 	Cancel a job and more job control options [mjobctl]
+Use: mjobctl -c job_ID
+
+
+#######################################################################
+#######################################################################
+############################ WORKFLOW #################################
+#######################################################################
+#######################################################################
+############################## JOB 1 ################# c. 17 min ######
+
+### copy files
+scp -r /Users/.../toCluster/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-archiveData-0/
+scp -r /Users/.../job_1/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job1/
+
+### run job
+msub -q fat -N job1 job1.sh
+
+### save results locally
+scp -r kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job1/* ~/temp/
+
+### send some results back to the cluster
+scp -r /Users/.../toCluster/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-archiveData-0/
+
+############################## JOB 2 ################# c. 9 min ######
+
+### copy files
+scp -r /Users/.../job_2_prep2/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job2/
+
+### run job
+msub -q singlenode -N job2 job2.sh
+
+### save results locally
+scp -r kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job2/* ~/temp/
+
+### send some results back to the cluster: RGset_ProbesampleQC
+scp -r /Users/.../toCluster/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-archiveData-0/
+
+############################## JOB 3 ################# c. 17 min ######
+
+### copy files
+scp -r /Users/.../job_3_prep3/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job3/
+
+### run job
+msub -q singlenode -N job3 job3.sh
+
+### save results locally
+scp -r kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job3/* ~/temp/
+
+### send some results back to the cluster: RGset_ProbesampleQC_norm + beta
+scp -r /Users/.../toCluster/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-archiveData-0/
