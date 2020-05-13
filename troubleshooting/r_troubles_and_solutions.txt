@@ -1,0 +1,24 @@
+################################################################################
+# COMO ESCOLHER A VERSÃO DE R A SER USADA? (mac & Linux)
+################################################################################
+# ref: https://support.rstudio.com/hc/en-us/articles/200486138-Changing-R-versions-for-RStudio-desktop
+# ref: https://codingpad.maryspad.com/2018/02/26/how-to-update-r-and-rstudio-on-mac-os-x/
+
+# ver as versões instaladas e a corrente
+ls -l /Library/Frameworks/R.framework/Versions/
+
+# definir a versão desejada
+ln -sfhv /Library/Frameworks/R.framework/Versions/3.5 /Library/Frameworks/R.framework/Versions/Current
+ln -sfhv /Library/Frameworks/R.framework/Versions/4.0 /Library/Frameworks/R.framework/Versions/Current
+
+################################################################################
+
+################################################################################
+
+################################################################################
+
+################################################################################
+
+################################################################################
+
+################################################################################
