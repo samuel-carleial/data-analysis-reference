@@ -1,24 +1,43 @@
 # Reference guide to statistical analysis
-A codebase reference guide for the most common types of analysis in data science, particularly in inferential statistical analysis of research data.
+A compilation of code, publications and other relevant information related to data analysis. Several topics are covered here, particularly data visualization and statistical modeling.
 
-Language: R
+Main language: R
 
-Topic sections:
+## Content:
+### [reference_guide] BASH
+Useful code that one might always insist in forgetting when having to use the bash prompt.
+
+### [reference_guide] R
+**The core of this repository**
+
+Sections:
+- BASICS
+- Accuracy, power and reliability
+- Classification
 - Clustering
-- Data inspection
-- Imputation			
-- Modelling: (multi-)linear (mixed) models
-- Modelling: validating statistical models
-- Modelling: robust regression
+- Data manipulation
+- Data visualization (plots, tables, maps...)
+- Imputation
+- Mediation and moderation
+- Modelling: fit and validation
+- Modelling: model (multi-)linear (mixed)
+- Modelling: model linear robust regression
+- Modelling: model repeated measures
+- Modelling: model zero-inflation
+- Modelling: predictions
 - Path analysis
-- Prediction of model effects
 - Randomization
 
-Topic sections coming next:
-- (not available)Modelling: zero inflation
-- (not available)Data visualization (maps)
-- (not available)Regression to the mean (RTM)
-- (not available)Repeated measures
+### literature
+Guidelines, publications and other literature from other authors.
 
-Courses:
-- 2019 Labomar, University of Ceará (Brazil)
+### templates
+Templates to use in data analysis.
+
+### troubleshooting
+Solving problems regarding R.
+
+### courses and workshops
+Training in R prepared by myself and others.
+
+*Note: work in progress*
