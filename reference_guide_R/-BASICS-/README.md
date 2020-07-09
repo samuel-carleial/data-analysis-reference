@@ -3,6 +3,9 @@
 
 This section is intended to gather general guidelines, demos and examples of what can be done in R.
 
+### Reference guide to data analysis in R
+https://www.r-graph-gallery.com/index.html
+
 ### Reference guide to specific packages:
 #### data.table
 https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html

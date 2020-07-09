@@ -40,5 +40,13 @@ printf '%s\n' * > filename
 ### count files in folder
 ls | wc -l
 
+#######################################################################
+TEXT FILE MANIPULATIONS
+#######################################################################
+
 ### check number of lines in file
 ws -l filename
+
+### check string occurrences
+egrep -c 'cg04271617' filename
+
