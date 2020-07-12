@@ -1,7 +1,6 @@
-# Reference guide to statistical analysis
 ## R Basics
 
-This section is intended to gather general guidelines, demos and examples of what can be done in R.
+General guidelines, demos, examples and else that can be done in R.
 
 ### Reference guide to data analysis in R
 https://www.r-graph-gallery.com/index.html

@@ -1,11 +1,26 @@
-###########################################################################
-# R Basics
-###########################################################################
-
+######################################################################### #
+## R Basics
+######################################################################### #
+##
 ## Author: Samuel Carleial
 ## Date: 2020.04
+##
+######################################################################### #
 
-###########################################################################
+## Work with variables/vectors, matrices and dataframes
+numer_variable <- rnorm(n=100,mean=10,sd=1.25)
+hist(numer_variable)
+
+categ_variable <- factor(rbinom(n=100,size=1,prob=.80))
+plot(categ_variable)
+
+mt <- matrix(data=rnorm(100) , ncol=10 , byrow=TRUE)
+pairs(mt)
+
+dt <- airquality
+summary(dt)
+par(mfrow=c(1,3)) # split pane for plots
+plot(Ozone ~ Solar.R + Wind + Temp, data=dt) # plot variable Y as a function of X
 
 ## Examples of what R is capable of
 library("TeachingDemos")
@@ -37,11 +52,12 @@ demo(viridis)
 library("formatR")
 tidy_app()
 
-## visualize table
+## visualize tables
 library("memisc")
 mtable()
+
 library("stargazer")
 stargazer()
 
 
-###########################################################################
+######################################################################### #
