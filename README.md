@@ -1,4 +1,4 @@
-# Reference guide to statistical analysis
+# Reference guide to data analysis
 A compilation of code, publications and other relevant information related to data analysis. Several topics are covered here, particularly data visualization and statistical modeling.
 
 Main language: R
