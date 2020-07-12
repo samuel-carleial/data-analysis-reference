@@ -1,5 +1,5 @@
 # Reference guide to data analysis
-## Accuracy, Power and Reliability
+## Data visualization (maps)
 
 Description
 

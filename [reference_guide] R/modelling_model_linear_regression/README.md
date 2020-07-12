@@ -1,4 +1,6 @@
-# Reference guide to statistical analysis
+# Reference guide to data analysis
 ## Modelling: linear regression
 
-to do
+Description
+
+## Packages:

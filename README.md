@@ -1,10 +1,12 @@
 # Reference guide to data analysis
+
 A compilation of code, publications and other relevant information related to data analysis. Several topics are covered here, particularly data visualization and statistical modeling.
 
 Main language: R
 
 ## Content:
 ### [reference_guide] BASH
+
 Useful code that one might always insist in forgetting when having to use the bash prompt.
 
 ### [reference_guide] R
@@ -29,15 +31,19 @@ Sections:
 - Randomization
 
 ### literature
+
 Guidelines, publications and other literature from other authors.
 
 ### templates
+
 Templates to use in data analysis.
 
 ### troubleshooting
+
 Solving problems regarding R.
 
 ### courses and workshops
+
 Training in R prepared by myself and others.
 
 *Note: work in progress*
