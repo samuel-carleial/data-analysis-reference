@@ -41,6 +41,13 @@ power.examp()
 power.examp(n=25)
 power.examp(alpha=0.1)
 
+## Remember functions by using the "spaced repetition" approach
+# help remember things and what to learn next in R
+# ref: https://github.com/djacobs7/remembr
+devtools::install_github( "djacobs7/remembr")
+library("remembr")
+
+
 ## colors
 library("colorspace")
 demo(brewer)

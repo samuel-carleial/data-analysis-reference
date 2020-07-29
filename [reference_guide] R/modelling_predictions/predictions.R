@@ -18,6 +18,7 @@ length(residuals(lm))
 
 # plot effects automatically
 plot(allEffects(lm))
+effectsTheme() # set the lattice theme
 
 # plot effects manually (using the Wind variable only)
 par(mfrow = c(1,3))

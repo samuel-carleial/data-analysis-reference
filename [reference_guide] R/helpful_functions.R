@@ -109,11 +109,32 @@ multiplot <- function(..., plotlist = NULL, file, cols = 1, layout = NULL) {
 }
 
 ########################################################################
-##																	  
+## Replace 999 or 99 to NA in dataset																	  
 ########################################################################
 ## reference: 
 ## function: 
 
+toNA999 <- function(x) {
+  for (c in 1:ncol(x)) {
+    for (r in 1:nrow(x)) {
+      if(!is.na(x[r,c]) & x[r,c]==999) {
+        x[r,c] <- NA
+      }
+    }
+  }
+  return(x)
+}
+
+toNA99 <- function(x) {
+  for (c in 1:ncol(x)) {
+    for (r in 1:nrow(x)) {
+      if(!is.na(x[r,c]) & x[r,c]==99) {
+        x[r,c] <- NA
+      }
+    }
+  }
+  return(x)
+}
 
 
 ########################################################################
