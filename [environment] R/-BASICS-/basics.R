@@ -3,26 +3,69 @@
 ######################################################################### #
 ##
 ## Author: Samuel Carleial
-## Date: 2020.04
+## Date: 2020.08
 ##
 ######################################################################### #
 
-## Work with variables/vectors, matrices and dataframes
-numer_variable <- rnorm(n=100,mean=10,sd=1.25)
-hist(numer_variable)
+## variables/vectors, matrices and dataframes
+numeric_variable <- rnorm(n=100,mean=10,sd=1.25)
+hist(numeric_variable)
 
-categ_variable <- factor(rbinom(n=100,size=1,prob=.80))
-plot(categ_variable)
+categorical_variable <- factor(rbinom(n=100,size=1,prob=.80))
+plot(categorical_variable)
 
-mt <- matrix(data=rnorm(100) , ncol=10 , byrow=TRUE)
-pairs(mt)
+my_matrix <- matrix(data=rnorm(100) , ncol=10 , byrow=TRUE)
+pairs(my_matrix)
 
 dt <- airquality
 summary(dt)
-par(mfrow=c(1,3)) # split pane for plots
-plot(Ozone ~ Solar.R + Wind + Temp, data=dt) # plot variable Y as a function of X
 
-## Examples of what R is capable of
+
+## indexing
+numeric_variable[4] # element in a vector
+dt[, "Ozone"] # column
+
+
+## manipulating data
+cbind(iris$Sepal.Length, iris$Species)[1:5,]
+rbind()
+colnames(dt)
+
+
+## checking and controling
+class()
+identical(colnames(dt), names(dt))
+stopifnot()
+all.equal()
+isTRUE()
+try()
+
+
+## plot data
+par(mfrow=c(2,2)) # split pane in two rows and two columns
+hist(numeric_variable)
+#boxplot() # comment/uncomment code to control what is going to be run
+#barplot()
+plot(categorical_variable)
+plot(Ozone ~ Solar.R + Wind, data=dt) # plot variable Y as a function of X
+
+
+## colors: select color to use in plots
+library("colorspace")
+demo("brewer")
+demo("carto")
+demo("scico")
+demo("viridis")
+
+## modeling data
+my_model <- lm(Ozone ~ Solar.R + Wind + Temp, data=dt)
+summary(my_model)
+car::Anova(my_model, type="III")
+par(mfrow=c(2,2)) # split pane for plots
+plot(my_model)
+
+
+## some other stuff that might be done in R
 library("TeachingDemos")
 ?TeachingDemos
 
@@ -41,30 +84,18 @@ power.examp()
 power.examp(n=25)
 power.examp(alpha=0.1)
 
-## Remember functions by using the "spaced repetition" approach
+
+## format R code: format code scripts by using this shiny application
+library("formatR")
+tidy_app()
+
+
+## Remember R functions by using the "spaced repetition" approach
 # help remember things and what to learn next in R
 # ref: https://github.com/djacobs7/remembr
 devtools::install_github( "djacobs7/remembr")
 library("remembr")
-
-
-## colors
-library("colorspace")
-demo(brewer)
-demo(carto)
-demo(scico)
-demo(viridis)
-
-## format R code
-library("formatR")
-tidy_app()
-
-## visualize tables
-library("memisc")
-mtable()
-
-library("stargazer")
-stargazer()
+help(remembr)
 
 
 ######################################################################### #
