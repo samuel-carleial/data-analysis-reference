@@ -1,6 +1,0 @@
-# Reference guide to data analysis
-## Accuracy, Power and Reliability
-
-Description
-
-## Packages:

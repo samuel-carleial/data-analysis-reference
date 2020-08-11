@@ -1,0 +1,52 @@
+Non-exaustive compilation of commands in bash (shell, terminal, ...) that can make your life better.
+
+#######################################################################
+BASICS
+#######################################################################
+### clear screen
+clear
+
+### see directory and present files in folder
+pwd
+ls
+
+### move around in folders
+cd
+cd ..
+
+### remove files (no yes confirmation!)
+rm
+rm -rf *.png
+
+### create folders, create files, edit files
+mkdir
+touch filename
+nano filename
+
+### help documentation of functions
+man function_name
+
+#######################################################################
+OPERATIONS
+#######################################################################
+### Copy and safe copy
+cp from to
+scp from to
+
+### list files into a specific file
+ls > filename
+printf '%s\n' * > filename
+
+### count files in folder
+ls | wc -l
+
+#######################################################################
+TEXT FILE MANIPULATIONS
+#######################################################################
+
+### check number of lines in file
+ws -l filename
+
+### check string occurrences
+egrep -c 'cg04271617' filename
+

@@ -1,49 +1,49 @@
-# Reference guide to data analysis
+# A guide to data analysis
 
 A compilation of code, publications and other relevant information related to data analysis. Several topics are covered here, particularly data visualization and statistical modeling.
 
 Main language: R
 
+
 ## Content:
-### [reference_guide] BASH
+### [environment] BASH
 
 Useful code that one might always insist in forgetting when having to use the bash prompt.
 
-### [reference_guide] R
-**The core of this repository**
 
-Sections:
+### [environment] R **(the core of this repository)**
+
+Main sections:
 - BASICS
-- Accuracy, power and reliability
+- Accuracy, power and clinical significance
+- Causal inference
 - Classification
 - Clustering
+- Data imputation
 - Data manipulation
+- Data randomization
 - Data visualization (plots, tables, maps...)
-- Imputation
-- Mediation and moderation
-- Modelling: fit and validation
-- Modelling: model (multi-)linear (mixed)
-- Modelling: model linear robust regression
-- Modelling: model repeated measures
-- Modelling: model zero-inflation
-- Modelling: predictions
-- Path analysis
-- Randomization
+- **Bayesian** statistical approach
+- **Frequentist** statistical approach
+
 
 ### literature
 
-Guidelines, publications and other literature from other authors.
+Guidelines, blog posts, scientific publications and other literature/references related to data analysis.
+
 
 ### templates
 
 Templates to use in data analysis.
 
+
 ### troubleshooting
 
-Solving problems regarding R.
+Making R work in your machine.
+
 
 ### courses and workshops
 
 Training in R prepared by myself and others.
 
-*Note: work in progress*
+*Note: this is a work in progress*
