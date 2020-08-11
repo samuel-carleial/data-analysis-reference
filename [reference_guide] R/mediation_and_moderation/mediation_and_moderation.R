@@ -7,12 +7,20 @@ library(QuantPsyc)
 library(MASS)
 library(rockchalk)
 
-# good references:
-# https://ademos.people.uic.edu/Chapter14.html#3_moderation_analyses
-# https://imai.fas.harvard.edu/research/files/mediationR2.pdf
+# references for MEDIATION:
+# https://advstats.psychstat.org/book/mediation/index.php
 # https://web.mit.edu/teppei/www/research/mediationR.pdf
+# https://imai.fas.harvard.edu/research/files/mediationR2.pdf
 # https://personality-project.org/r/psych/HowTo/mediation.pdf
+# https://towardsdatascience.com/doing-and-reporting-your-first-mediation-analysis-in-r-2fe423b92171
+# https://data.library.virginia.edu/introduction-to-mediation-analysis/
+
+# references for MODERATION:
 # https://advstats.psychstat.org/book/moderation/index.php
+# https://ademos.people.uic.edu/Chapter14.html#3_moderation_analyses
+
+# references for CAUSAL INFERENCE:
+# https://www.r-bloggers.com/an-introduction-to-causal-inference/
 
 
 # MEDIATION ---------------------------------------------------------------
@@ -35,8 +43,21 @@ fitmed <- mediate(fit.MX, fit.YMX, treat = 'X', mediator = 'M',
 summary(fitmed)
 plot(fitmed)
 
+# EXAMPLE 2: bmem package
+# https://advstats.psychstat.org/book/mediation/index.php
+library("bmem")
+library("sem")
+temp.model <- specifyEquations(exog.variances=T) 
+Y = b*X + cp*M
+X = a*M
+#(empty)
+effects <- c('a*b', 'cp+a*b') 
+temp.res <- bmem.sobel(temp, temp.model, effects)
+temp.res <- bmem(temp, temp.model, effects, boot = 999) # bootstraping CIs
+
+
 # clean up
-rm(Y, X, M, temp, fit.MX, fit.YMX, fitmed)
+rm(Y, X, M, temp, fit.MX, fit.YMX, fitmed, temp.model, effects, temp.res)
 
 
 # MODERATION --------------------------------------------------------------
