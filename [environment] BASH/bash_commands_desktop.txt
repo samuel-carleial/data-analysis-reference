@@ -1,52 +1,97 @@
-Non-exaustive compilation of commands in bash (shell, terminal, ...) that can make your life better.
+Non-exaustive compilation of commands in bash (shell, terminal, ...) that can make your life better. For a good reference see: https://mywiki.wooledge.org/BashGuide
+
 
 #######################################################################
 BASICS
 #######################################################################
-### clear screen
-clear
+
+> clear (clear screen)
+> date (current date)
+> df -H (free disk space, human readable)
+
+### get the environment variables: user-defined/present in current session
+> env
+> $PATH
+> echo $PATH | tr : '\n'
+> $HOME
 
 ### see directory and present files in folder
-pwd
-ls
+> pwd (and also check if you have permissions, in case you are located in a place you should not be)
+> ls
 
 ### move around in folders
-cd
-cd ..
+> cd
+> cd ..
 
 ### remove files (no yes confirmation!)
-rm
-rm -rf *.png
+> rm
+> rm -rf *.png
 
 ### create folders, create files, edit files
-mkdir
-touch filename
-nano filename
+> mkdir
+> touch filename
+> nano filename
 
 ### help documentation of functions
-man function_name
+> man function_name
+
+### observe an operation
+> watch command (the command will run every regular specific time)
+
 
 #######################################################################
 OPERATIONS
 #######################################################################
 ### Copy and safe copy
-cp from to
-scp from to
+> cp from to
+> scp from to
+> scp testTextFile.txt samuelcarleial@tadpole.genomecenter.ucdavis.edu:/home/samuelcarleial
+> scp my_local_filte.txt shunter@tadpole.genomecenter.ucdavis.edu:/home/shunter
 
-### list files into a specific file
-ls > filename
-printf '%s\n' * > filename
+### list files in pwd into a specific file
+> ls > filename
+> printf '%s\n' * > filename
 
-### count files in folder
-ls | wc -l
+### count files/folders in folder (not including subdirectories)
+> ls | wc -l
+### count files (including subdirectories) that have string in its name
+> ls -R | grep "string" | wc -l
+
+### find file
+> find . -name filename.file
+> find . -name "*.txt"
+
+### small calculator
+> bc (write quite to exit the program)
+
 
 #######################################################################
 TEXT FILE MANIPULATIONS
 #######################################################################
 
+### read content
+> cat
+> cat -5 (read first 5 lines)
+> less
+> less -S (results not wrapped in lines)
+
+> zcat  (used for gzipped compressed files)
+> zless (used for gzipped compressed files)
+
+
 ### check number of lines in file
-ws -l filename
+> ws -l filename
 
 ### check string occurrences
-egrep -c 'cg04271617' filename
+(egrep is deprecated)
+> egrep -c 'cg04271617' filename (-c: count numbers of occurrences)
+> grep -Hn 'cg04271617' filename (check line and pattern found)
 
+> awk
+
+### read specific line of file
+> sed -n '2p' file
+> sed -n '2~4p' file
+
+### read line (2) and specific position (from 640 to 700) in a text file
+> sed -n '2p' file | cut -c 640-700

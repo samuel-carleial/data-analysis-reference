@@ -1,186 +1,193 @@
-#######################################################################
-### LOGIN TO CLUSTER
+################################################################################
+# LOGIN TO CLUSTER
 
-(John Dounat)
-ssh -X kn_pop501249@bwunicluster.scc.kit.edu
+# to use GUI-based environment (X11; works only in Linux based OS)
+> ssh -X kn_pop501249@bwunicluster.scc.kit.edu (deprecated)
 
-(Miriam Mars)
-ssh -X kn_pop212883@bwunicluster.scc.kit.edu
-
-
-#######################################################################
-### MOVE BETWEEN FOLDERS ($WORKING, $HOME, $TMP)
-
-ls -l
-cd ..
-cd ~/WORKING
-
-cd /pfs/work2/workspace/scratch/kn_pop501249-archiveData-0
-cd /pfs/work2/workspace/scratch/kn_pop501249-SocialAnalyses-0
+# normal login
+> ssh kn_pop501249@bwunicluster.scc.kit.edu (deprecated)
+> ssh kn_pop501249@uc2.scc.kit.edu
 
 
-#######################################################################
-### ALLOCATE, I.E., CREATE FOLDERS
+################################################################################
+# MOVE BETWEEN FOLDERS ($WORKING, $HOME, $TMP)
 
-ws_allocate <folderName> <dayDuration>
+> ls -l
+> cd
+> cd ..
+> cd ~/WORKING
+
+# examples
+> cd /pfs/work2/workspace/scratch/kn_pop501249-rawData-0
+> cd /pfs/work2/workspace/scratch/kn_pop501249-epigeneticAnalyses-0
+
+
+################################################################################
+# ALLOCATE, I.E., CREATE FOLDERS
+
+> ws_allocate <folderName> <dayDuration>
 ws_list -a
 ws_extend
 ws_release
 
 mkdir test1
+mkdir raw_files data output
 
 
-#######################################################################
-### GRANT PERMISSIONS AND SHARE WORKSPACE (via ACL, Access Control Lists)
+################################################################################
+# GRANT PERMISSIONS AND SHARE WORKSPACE (via ACL, Access Control Lists)
 
-### see permissions
-getfacl $<my_workspace>
-getfacl $(ws_find SocialAnalysis)
-getfacl /pfs/work2/workspace/scratch/kn_pop501249-archiveData-0/
+# see permissions
+> getfacl $<my_workspace>
+> getfacl $(ws_find epigeneticAnalyses)
+> getfacl /pfs/work2/workspace/scratch/kn_pop501249-rawData-0/
 
-### grant one user permission to specific folder (read-only)
-setfacl -Rm u:<user>:rX,d:u:<user>:rX $my_workspace
-setfacl -Rm u:kn_pop212883:rX,d:u:kn_pop212883:rX /pfs/work2/workspace/scratch/kn_pop501249-archiveData-0/
+# grant one user permission to specific folder (read-only)
+> setfacl -Rm u:<user>:rX,d:u:<user>:rX $my_workspace
+> setfacl -Rm u:kn_pop212883:rX,d:u:kn_pop212883:rX /pfs/work2/workspace/scratch/kn_pop501249-rawData-0/
 
-### grant one user permission to specific folder (read + write)
-setfacl -Rm u:<user>:rwX,d:u:<user>:rwX $my_workspace
-setfacl -Rm u:kn_pop212883:rwX,d:u:kn_pop501249:rwX /pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0
+# grant one user permission to specific folder (read + write)
+> setfacl -Rm u:<user>:rwX,d:u:<user>:rwX $my_workspace
+> setfacl -Rm u:kn_pop212883:rwX,d:u:kn_pop501249:rwX /pfs/work2/workspace/scratch/kn_pop501249-ep_analysis-0
 
-### remove permissions
-setfacl -Rb $my_workspace
-
-
-#######################################################################
-### SECURE COPY LOCAL ----> BWUNICLUSTER
-### NOTE: you should not be signed-in to the cluster
-scp <from local laptops path> <to cluster path>
-scp ~/<path>/<filename> kn_pop501249@bwunicluster.scc.kit.edu:/<path>/<filename>
-
-### recursively upload files
-scp -r /Users/../*.png kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/.../destination
+# remove permissions
+> setfacl -Rb $my_workspace
 
 
-#######################################################################
-# SECURE COPY BWUNICLUSTER ----> LOCAL
-# NOTE: you should not be signed-in to the cluster
-# scp <from cluster path> <to  path in local laptop>
-# scp kn_pop501249@bwunicluster.scc.kit.edu:<path>/<filename> ~/temp/<filename>
-
-scp kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-test1-0/trial1/test1.R ~/temp/fitus.R
-scp -r kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job1/* ~/temp/
+################################################################################
+# SECURE COPY OF FILES
+# (NOTE: you should not be signed-in to the cluster)
+# scp <from local laptops path> <to cluster path>
+# scp ~/<path>/<filename> kn_pop501249@bwunicluster.scc.kit.edu:/<path>/<filename>
+# scp -r <file> <destination> (recursively copy files)
 
 
-#######################################################################
-### ENVIRONMENT MODULES
-module -l avail
-module avail R
-module load category/softwarename/version
-module load math/R
-module unload category/softwarename/version
-module list
+# example: LOCAL ----> BWUNICLUSTER
+> scp /Users/samuelcarleial/Desktop/Arbeit/project_epigenetics/cluster_computing/job_1_rgset/targets_2019_03_14_all.csv kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-epigeneticAnalyses-0/job1/
+> scp -r /Users/samuelcarleial/Desktop/temporario/kibumba_DNA_methylation/rawData/*.idat kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-rawData-0/kibumba/
 
-### COPY MODULE EXAMPLES TO HOME FOLDER TO EDIT THEM
-### module load <category/softwarename>
-module load math/R
+# example: BWUNICLUSTER ----> LOCAL
+> scp kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-test1-0/trial1/test1.R ~/temp/fitus.R
+> scp -r kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-epigeneticAnalyses-0/job1/* ~/temp/
 
-(Code below was not yet tested)
-cp -R $SWN_EXA_DIR
+# sandbox
+> scp  kn_pop501249@uc2.scc.kit.edu:/pfs/work7/workspace/scratch/kn_pop501249-ewas1-0/
+> scp kn_pop501249@uc2.scc.kit.edu:/pfs/work7/workspace/scratch/kn_pop501249-ewas1-0/ .
 
 
-#######################################################################
-### RUN R CODE IN COMMAND LINE
-### R CMD BATCH <script.R>
-R CMD BATCH test1.R
-
-### Install manually a package
-R CMD INSTALL <package source.tar.gz/tgz>
-R CMD INSTALL readr_1.3.1.tar.gz >& logfile.txt
-
-
-#######################################################################
-### JOB SUBMISSION
-### Submits a job and queues it in an input queue [msub].
-### For manual, use "man msub"
-
-msub -q singlenode -N test1 job.sh
+################################################################################
+# ENVIRONMENT MODULES
+> module -l avail
+> module avail R
+> module load category/softwarename/version
+> module load math/R
+> module unload category/softwarename/version
+> module list
 
 
-#######################################################################
-### MSUB EXAMPLES
-msub  -I  -V  -l nodes=1:ppn=1,pmem=5000mb -l walltime=0:02:00:00
-msub  -I  -V  -l nodes=1:ppn=1 -l walltime=0:02:00:00
-msub -q singlenode -N test -l nodes=1:ppn=1,walltime=3:00:00,pmem=5000mb job.sh
+################################################################################
+# RUN R
 
-### Apparently #MSUB and #MOAB can be used interchangeably inside the job script (a bash file *.sh)
-### Instead of using parameters after the "msub" command, #MSUB parameters can be added inside the
-### job file, as follows:
+# run in command line
+> R CMD BATCH <script.R>
+> R CMD INSTALL <package source.tar.gz/tgz>
+> R CMD INSTALL readr_1.3.1.tar.gz >& logfile.txt
 
-#MSUB -l nodes=1:ppn=1
-#MSUB -l walltime=3:00:00
-#MSUB -l pmem=200000mb (max: 64000mb)
-#MSUB -N test
-
-### And then run the command below (*command line overrule script options)
-msub -q fat job.sh
+# run R in a session
+> module load math/R/<version>
+> R
+> LC_ALL=C.UTF-8 R
 
 
-#######################################################################
-### CHECK CLUSTER CURRENT USE AND JOB STATUSES (MOAB commands)
+################################################################################
+# JOB SUBMISSION
+# sen a job to run. msub is deprecated. sbatch is now used.
+# jobs need a bash (.sh) file and an R script (.R). Jobs are put in a queue for the run.
 
-showq 		Displays information about active, eligible, blocked, and/or recently completed jobs [showq]
+> man msub
+> man sbatch
 
-checkjob 	Displays detailed job state information [checkjob]
-showbf 	Shows what resources are available for immediate use [showbf]
-showstart 	Returns start time of submitted job or requested resources [showstart]
-canceljob 	Cancels a job (opsoleted!) [canceljob]
-mjobctl 	Cancel a job and more job control options [mjobctl]
-Use: mjobctl -c job_ID
+# examples
+# note: resources indicated in command override those inside job *.sh file
+> msub -q singlenode -N test1 job.sh (deprecated)
+> sbatch --partition=single job.sh
+> sbatch --partition=fat job.sh
+> sbatch -p dev_single -n 1 -t 10:00 --mem=5000  job.sh
 
 
-#######################################################################
-#######################################################################
-############################ WORKFLOW #################################
-#######################################################################
-#######################################################################
-############################## JOB 1 ################# c. 17 min ######
+################################################################################
+# SBATCH options
+# options are put rather inside job file or in the job submission command
+> sbatch --partition=fat -n 1 -t 10:00 --mem=5000  job.sh
 
-### copy files
-scp -r /Users/.../toCluster/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-archiveData-0/
-scp -r /Users/.../job_1/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job1/
+> -n (number of tasks to be lauched)
+> --array 1-10 (only works in command line, not inside job file)
+> --error=<filename>
 
-### run job
-msub -q fat -N job1 job1.sh
 
-### save results locally
-scp -r kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job1/* ~/temp/
+################################################################################
+# MSUB EXAMPLES (deprecated)
+> msub  -I  -V  -l nodes=1:ppn=1,pmem=5000mb -l walltime=0:02:00:00
+> msub  -I  -V  -l nodes=1:ppn=1 -l walltime=0:02:00:00
+> msub -q singlenode -N test -l nodes=1:ppn=1,walltime=3:00:00,pmem=5000mb job.sh
 
-### send some results back to the cluster
-scp -r /Users/.../toCluster/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-archiveData-0/
+# Apparently #MSUB and #MOAB can be used interchangeably inside the job script (a bash file *.sh)
+# Instead of using parameters after the "msub" command, #MSUB parameters can be added inside the
+# job file, as follows:
 
-############################## JOB 2 ################# c. 9 min ######
+> #MSUB -l nodes=1:ppn=1
+> #MSUB -l walltime=3:00:00
+> #MSUB -l pmem=200000mb (max: 64000mb)
+> #MSUB -N test
 
-### copy files
-scp -r /Users/.../job_2_prep2/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job2/
 
-### run job
-msub -q singlenode -N job2 job2.sh
+################################################################################
+# JOB OPERATIONS: check cluster and job statuses
 
-### save results locally
-scp -r kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job2/* ~/temp/
+# SLURM
+> squeue -l (view jobs in queue)
+> sinfo_t_idle (resources available)
+> scancel
 
-### send some results back to the cluster: RGset_ProbesampleQC
-scp -r /Users/.../toCluster/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-archiveData-0/
+# MOAB commands (deprecated)
+> showq 		Displays information about active, eligible, blocked, and/or recently completed jobs [showq]
+> checkjob 	Displays detailed job state information [checkjob]
+> showbf 	Shows what resources are available for immediate use [showbf]
+> showstart 	Returns start time of submitted job or requested resources [showstart]
+> canceljob 	Cancels a job (obsoleted!) [canceljob]
+> mjobctl 	Cancel a job and more job control options [mjobctl]
 
-############################## JOB 3 ################# c. 17 min ######
 
-### copy files
-scp -r /Users/.../job_3_prep3/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job3/
+################################################################################
+################################################################################
+################################## WORKFLOW ####################################
+################################################################################
+################################################################################
 
-### run job
-msub -q singlenode -N job3 job3.sh
+################################################################################
+# example 1
+# copy files
+> scp -r /Users/samuelcarleial/temp/epigenetics_pipeline/toCluster/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-rawData-0/
+> scp -r /Users/samuelcarleial/Desktop/Arbeit/project_epigenetics/cluster_computing/job_1_rgset/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-epigeneticAnalyses-0/job1/
+# run job
+> msub -q fat -N job1 job1.sh
+# save results locally
+> scp -r kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-epigeneticAnalyses-0/job1/* ~/temp/
+# send some results back to the cluster
+> scp -r /Users/samuelcarleial/temp/epigenetics_pipeline/toCluster/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-rawData-0/
 
-### save results locally
-scp -r kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-SocialAnalysis-0/job3/* ~/temp/
 
-### send some results back to the cluster: RGset_ProbesampleQC_norm + beta
-scp -r /Users/.../toCluster/* kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-archiveData-0/
+################################################################################
+# example 2
+
+sinfo_t_idle
+squeue -l
+
+sbatch --partition=fat job.sh
+sbatch --partition=multiple --array=1-6 job.sh
+
+sbatch --partition=fat --mem=100Gb job.sh
+sbatch --partition=multiple --array=1-6 --mem=10Gb job.sh
+
+scp /Users/samuelcarleial/temp/trial_RnBeads/DRC_trial_850k/targetBL_new.csv kn_pop501249@uc2.scc.kit.edu:/pfs/work7/workspace/scratch/kn_pop501249-ewas1-0/data/.
+scp -r kn_pop501249@uc2.scc.kit.edu:/pfs/work7/workspace/scratch/kn_pop501249-ewas1-0/rjob.Rout .
