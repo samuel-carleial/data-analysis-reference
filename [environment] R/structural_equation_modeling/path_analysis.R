@@ -5,6 +5,7 @@
 # Date: 30.01.2021
 
 
+# lavaan package & derivates  --------------------------------------------------
 ## preliminaries
 set.seed(2537)
 rm(list = ls())
@@ -14,7 +15,42 @@ library(semPlot)
 library(lavaanPlot)
 library(dplyr)
 
-dataset <- read.csv('dataset.csv', header = TRUE, sep = ',')
+setwd("~/git_projects/data-analysis-reference/[environment] R/structural_equation_modeling")
+dataset <- read.csv('dataset.txt', header = TRUE, sep="\t")
+
+# classical example
+## The industrialization and Political Democracy Example 
+## Bollen (1989), page 332
+help("PoliticalDemocracy")
+
+model <- ' 
+  # latent variable definitions
+     ind60 =~ x1 + x2 + x3
+     dem60 =~ y1 + a*y2 + b*y3 + c*y4
+     dem65 =~ y5 + a*y6 + b*y7 + c*y8
+
+  # regressions
+    dem60 ~ A*ind60
+    dem65 ~ B*ind60 + C*dem60
+
+  # residual correlations
+    y1 ~~ y5
+    y2 ~~ y4 + y6
+    y3 ~~ y7
+    y4 ~~ y8
+    y6 ~~ y8
+  
+  # mediation effects
+  direct  := B
+  indirect:= A+C
+  
+'
+
+fit <- sem(model, data = PoliticalDemocracy)
+summary(fit, fit.measures = TRUE)
+semPaths(fit, "std", layout="tree2")
+lavaanPlot(fit)
+
 
 # ref: 
 # model fit criteria by Hu & Bentler (1999)
@@ -182,8 +218,15 @@ plot(fit, pars=1:4, plot.type="trace")
 plot(fit, pars=1:4, plot.type="acf")
 coef(fit)
 semPaths(fit, 'std', fade=F, residuals=FALSE, intercepts=FALSE)
-         
-         
+      
+
+
+
+# NETCoupler package -----------------------------------------------------------
+# ref: https://netcoupler.github.io/NetCoupler/index.html
+# ref: https://github.com/NetCoupler/NetCoupler
+
+
 # END ---------------------------------------------------------------------
 
 sessionInfo()
