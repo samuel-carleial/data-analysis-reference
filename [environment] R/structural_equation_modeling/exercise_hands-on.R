@@ -8,6 +8,23 @@ library("semPlot")
 #- TASK 1 ----------------------------------------------------------------------
 # (5 min)
 
+# (EN) using the "FacialBurns" dataset, evaluate whether sex difference
+# affect facial burns ("Total Burned Surface Area" = TBSA) in patients with mental 
+# disorders. TBSA is explained by a latent variable made out of self-esteem and HADS.
+# Also, control your model for age.
+
+# (PT) use o conjunto de dados "FacialBurns" para avaliar se a diferença de sexo
+# afeta queimaduras faciais ("Total Burned Surface Area" = TBSA) em pacientes 
+# com transtornos mentais. TBSA é uma medida que pode ser explicada por auto-estima 
+# ("self-esteem) e HADS (escala psicológica), como uma variável latente. 
+# Controle seu modelo com a variável idade.
+
+data("FacialBurns") 
+
+
+#- TASK 2 ----------------------------------------------------------------------
+# (5 min)
+
 # (EN) use the classical "HolzingerSwineford1939" dataset to produce a path 
 # model of three latent factors of mental ability (visual, textual and speed).
 # The latent variables should explain grade scores. Add control variables as age
@@ -20,23 +37,6 @@ library("semPlot")
 # Ver help("<dataset>") para mais detalhes do conjunto de dados.
 
 data("HolzingerSwineford1939")
-
-
-
-#- TASK 2 ----------------------------------------------------------------------
-# (5 min)
-
-# (EN) using the "FacialBurns" dataset, evaluate whether sex difference
-# influences psychological functioning in patients with facial burns. The latter
-# is measured from variables self-esteem and HADS. Control model for age.
-
-# (PT) use o conjunto de dados "FacialBurns" para avaliar se a diferença de sexo
-# influencia o funcionamento psicológico em pacientes com queimaduras faciais. 
-# Queimaduras faciais são medidas a partir de variáveis de auto-estima e HADS 
-# (escala psicológica). Controle seu modelo com a variável idade.
-
-data("FacialBurns") 
-
 
 
 #- TASK 3 ----------------------------------------------------------------------
