@@ -7,13 +7,17 @@
 # automobiles (1973–74 models).
 data("mtcars")
 help("mtcars")
-mtcars
+tibble(mtcars)
 
-# Hypothesis: car weight is determined by gross horsepower and nr. of cylinders,
-# but horsepower is in turn defined by cylinder number.
+# Hypothesis: 
+# (EN) car weight is determined by gross horsepower and nr. of cylinders, but 
+# horsepower is in turn defined by cylinder number.
+# (PT) O peso do carro é determinado pela potência bruta e número de cilindros,
+# mas a potência é, por sua vez, definida pelo número de cilindros.
 
 # model
-m1 <- '
+m1 <- 
+'
     # measurement part
     
     # regression part
@@ -21,18 +25,16 @@ m1 <- '
       hp ~ cyl
     
     # residual correlations
-
 '
 
 # inspect model
-fit1 <- sem(m1, data=mtcars)     # fit SEM model
-summary(fit1, fit.measures=TRUE) # summary of model output
-semPaths(fit1)                   # plot SEM model
-# NOTE: Does the model has a good fit? How can you interpret the output?
+fit1 <- sem(m1, data = mtcars)     # fit
+summary(fit1, fit.measures = TRUE) # summary
+semPaths(fit1, rotation = 2)     # plot
+# NOTE: 
+# (EN) Does the model has a good fit? How can you interpret the output?
+# (PT) O modelo tem um bom ajuste? Como interpretar este resultado?
 
-mtcars <- mtcars %>%
-  mutate(hp = scale(hp),
-         wt = scale(wt))
 
 
 #-------------------------------------------------------------------------------
@@ -40,18 +42,25 @@ mtcars <- mtcars %>%
 # Daily air quality measurements in New York, May to September 1973.
 data("airquality")
 help("airquality")
+tibble(airquality)
 
-# Hypothesis: the air quality is determined by a number of measurable aspects,
+# Hypothesis: 
+# (EN) the air quality is determined by a number of measurable aspects,
 # namely solar radiation and ozone concentration. In addition, air quality might
-# also be affecged by wind, temperature and season of the year. Common sense also
+# also be affected by wind, temperature and season of the year. Common sense also
 # says that temperature and wind are highly correlated measures.
+# (PT) a qualidade do ar é determinada por uma série de aspectos mensuráveis, 
+# tipo radiação solar e a concentração de ozonio. Além disso, a qualidade do ar 
+# também pode ser afetada pelo vento, temperatura e estação do ano. Nosso senso 
+# comum também diz que a temperatura e o vento são medidas altamente correlacionadas.
 
 # preparation
 airquality <- airquality %>%
   mutate(Summer = ifelse(Month %in% c(7,8), 1, 0))
 
 # model
-m2 <- '
+m2 <- 
+'
     # measurement part
       airquality =~ Ozone + Solar.R
     
@@ -64,10 +73,12 @@ m2 <- '
 
 # inspect model
 fit2 <- sem(m2, data=airquality)
-summary(fit2, fit.measures=TRUE)
-modificationindices(fit2, sort.=TRUE) # verify possible model changes
+summary(fit2, fit.measures = TRUE)
+modificationindices(fit2, sort. = TRUE) # verify possible model changes
 semPaths(fit2)
-# NOTE: model fit is not good. Try removing Summer from the model (non-significant)
+# NOTE: 
+# (EN) Does the model has a good fit? How can you interpret the output?
+# (PT) O modelo tem um bom ajuste? Como interpretar este resultado?
 
 
 #-------------------------------------------------------------------------------
@@ -76,16 +87,17 @@ semPaths(fit2)
 # French-speaking provinces of Switzerland at about 1888.
 data("swiss")
 help("swiss")
-swiss
+tibble(swiss)
 
 # preparation
 swiss <- scale(swiss)
 
 # model
-m3 <- '
+m3 <- 
+'
     # measurement part
       MenPower       =~ Agriculture + Examination
-      NormAcceptance =~ Education + Catholic #+ Infant.Mortality
+      NormAcceptance =~ Education + Catholic + Infant.Mortality
     
     # regression part
       Fertility      ~ MenPower + NormAcceptance
@@ -95,13 +107,12 @@ m3 <- '
 '
 
 # inspect model
-fit3 <- sem(m3, data=swiss)
+fit3 <- sem(m3, data = swiss)
 lavInspect(fit3, "cov.lv")
-summary(fit3, fit.measures=TRUE)
-modificationindices(fit3, sort.=TRUE) # verify possible model changes
+summary(fit3, fit.measures = TRUE)
+modificationindices(fit3, sort. = TRUE) # verify possible model changes
 semPaths(fit3)
 # NOTE: warning refers to the fact that latent variables are neg. correlated (not an error)
-# NOTE: model fit is not good. Try removing Infant.Mortality out of NormAcceptance
 
 
 #-------------------------------------------------------------------------------
@@ -113,8 +124,10 @@ semPaths(fit3)
 # in developing countries.
 data("PoliticalDemocracy")
 help("PoliticalDemocracy")
+tibble(PoliticalDemocracy)
 
-m4 <- ' 
+m4 <- 
+' 
   # measurment part
      ind60 =~ x1 + x2 + x3
      dem60 =~ y1 + a*y2 + b*y3 + c*y4
@@ -139,6 +152,9 @@ m4 <- '
 fit4 <- sem(m4, data=PoliticalDemocracy)
 summary(fit4, fit.measures = TRUE)
 semPaths(fit4, "std", layout="tree2")
-lavaanPlot(fit4)
-# NOTE: identify if there is full mediation. What about model interpretation?
+# NOTE: 
+# (EN) identify if there is full mediation. What about model interpretation?
+# (PT) existe mediação? E quanto à interpretação dos resultados?
+
+
 
