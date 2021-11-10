@@ -86,7 +86,7 @@ model <-
   # covariance
   
   # user-defined estimations
-  indirect_effect := a+b
+  indirect_effect := a*b
   direct_effect   := c
   total_effect    := indirect_effect + direct_effect
 '
@@ -151,7 +151,7 @@ model <-
   
   # mediation effects
   direct  := B
-  indirect:= A+C
+  indirect:= A*C
 '
 
 fit <- sem(model, data = PoliticalDemocracy)

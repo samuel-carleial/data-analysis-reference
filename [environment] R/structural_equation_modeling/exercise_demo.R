@@ -146,7 +146,7 @@ m4 <-
   
   # mediation part
     DirectEffect  := B
-    IndirectEffect:= A+C
+    IndirectEffect:= A*C
 '
 
 fit4 <- sem(m4, data=PoliticalDemocracy)
