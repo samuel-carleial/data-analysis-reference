@@ -27,18 +27,37 @@ dt[, "Ozone"] # column
 
 
 ## manipulating data
+# several functions using ggplot2::plyr, ggplot2::dplyr, data.table, etc.
 cbind(iris$Sepal.Length, iris$Species)[1:5,]
 rbind()
 colnames(dt)
 
 
-## checking and controling
+## built-in and cryptic variables
+# R comes with built-in variables, For example:
+LETTERS
+letters
+pi
+month.abb
+# variables (or functions) starting with a dot (.) are not shown in the environment,
+# but they can be retrieved and used just as a normal variable/function
+.libPaths()
+.S4methods()
+.Machine
+.sys.timezone
+.teste <- c(1:20)
+.teste^2
+
+
+## checking, controlling, debugging
 class()
 identical(colnames(dt), names(dt))
 stopifnot()
 all.equal()
 isTRUE()
 try()
+# for more helpful functions, check the base package
+?base::conditions
 
 
 ## plot data
@@ -56,6 +75,7 @@ demo("brewer")
 demo("carto")
 demo("scico")
 demo("viridis")
+
 
 ## modeling data
 my_model <- lm(Ozone ~ Solar.R + Wind + Temp, data=dt)
@@ -96,6 +116,12 @@ tidy_app()
 devtools::install_github( "djacobs7/remembr")
 library("remembr")
 help(remembr)
+
+
+## Checking global options for the current R session
+options()
+options()$width
+options()$error
 
 
 ######################################################################### #
