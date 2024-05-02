@@ -1,0 +1,25 @@
+--------------------------------------------------------------------------------
+Descrição:
+Workshop dado em LatinR 2021. Participantes: ca. 30. Duração: c.3h
+O tema abordado foi SEM, com ênfase em análises de caminho e com variáveis latentes.
+O workshop foi dado como uma apresentação teórica. Apos pausa, foi feito uma pequena parte prática.
+Participação foi em geral muito baixa, e mais me pareceu um seminário, a um workshop. Pouquíssimas duvidas e participações pessoais foram feitas.
+Perguntas interessantes: como estimar graus de liberdade e como isso influi no ajuste do modelo.
+Como ajustar uma variável aleatória (cluster=) no ajuste de modelo e como interpretar isso.
+Arquivo da apresentação está disponível no repositório de GitHub.
+
+--------------------------------------------------------------------------------
+Notas:
+EXAMPLE 1
+varTable(fit)
+mtcars <- mtcars %>%
+  mutate(hp = scale(hp),
+         wt = scale(wt))
+
+EXAMPLE 2
+model fit is not good. Try removing Summer from the model (non-significant)
+
+EXAMPLE 3
+model fit is not good. Try removing Infant.Mortality out of NormAcceptance
+geralmente é recomendado ter ao menos 3 variáveis para produzir uma variável latente
+--------------------------------------------------------------------------------

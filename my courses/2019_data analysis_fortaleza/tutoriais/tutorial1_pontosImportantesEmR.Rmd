@@ -1,0 +1,129 @@
+---
+title: "Programação em R"
+subtitle: "Tutorial 1: relembrando o básico (pontos importantes)"
+author: "Samuel Carleial"
+date: "December 2019"
+output:
+  word_document: default
+  html_notebook: default
+---
+
+# Introdução
+
+R é uma linguagem de programação muito flexível e de fácil aprendizagem para leigos em computação. Talvez inicialmente a aprendizagem de R para aqueles que começam do zero é muito lenta. Porém, gradualmente se aprende R com mais rapidez e facilidade. Portanto, se diz que a linha de aprendizagem em R é exponencial (veja a figura abaixo).
+
+```{r echo=FALSE}
+plot(seq(5,10,.1), exp(seq(5,10,.1)), 
+     xaxt="n",
+     yaxt="n",
+     col="white", 
+     xlab="Tempo investido", 
+     ylab="Aprendizagem de R", type="n",)
+lines(seq(5,10,.1), exp(seq(5,10,.1)), col = "red")
+```
+
+R é uma linguagem orientada a objetos. Ou seja, nela o foco se dá na criação e manipulação de... **objetos** (obviamente) que são carregados na sessão atual do R, consumindo a memória corrente do computador (RAM).
+
+```{r}
+# Exemplo de objeto em R
+#  objeto_x, um vetor composto por números inteiros
+objeto_x <- c(15,7,20,4,12)
+objeto_x
+```
+
+Neste tutorial, serão descritos alguns pontos importantes e cruciais da linguagem R, que podem ser de extrema importância na análise e manipulação de dados.
+
+## Classes
+Todo e qualquer objeto em R deve pertencer a uma classe, que por sua vez possui diferentes propriedades. As classes mais comuns usadas numa análise de dados são vetores (variáveis singulares) e os (conjuntos de dados) data.frame ou data.table. Existem em R muitas outras classes e tipos de objetos, como matrizes, arranjos, objetos provenientes de modelos estatísticos, etc.
+
+```{r}
+# Exemplo de diferentes objetos que podem existir em R
+dados <- data.frame("X1" = rnorm(20), "X2" = "controle")
+matriz <- matrix(data = 1:20, ncol = 5)
+variavel <- objeto_x
+
+paste("dados:", class(dados))
+paste("matriz:", class(matriz))
+paste("variavel:", class(variavel))
+```
+
+## Vetores
+
+Vetores (variáveis singulares) podem assumir diferentes tipos, como números (contínuos ou integrais), caracteres, fatores, datas, etc. Para definir um vetor, usa-se a função c() onde cada elemento do vetor deve ser separado por vírgulas. Aliás, operações usando vetores geralmente são muito fáceis de realizar, como soma, multiplicação, etc. Veja abaixo:
+
+```{r}
+# números contínuos
+class(c(0.4, 1.2, 3.7))
+```
+
+```{r}
+# números integrais
+class(as.integer(c(objeto_x)))
+```
+
+```{r}
+# caracteres
+class(c("a", "b", "c"))
+```
+
+```{r}
+# fatores
+class(as.factor(c("homem", "mulher", "homem")))
+```
+
+```{r}
+# datas
+class(as.Date(c("2019-10-02", "2019-07-22", "2018-11-02")))
+```
+
+```{r}
+# operação usando um vetor
+print(objeto_x * 10)
+print(objeto_x + objeto_x)
+```
+
+## Modelos estatísticos
+### objetos com um conjunto de variáveis
+
+Modelos lineares produzidos por funções em R contém diferentes informações que podem ser armazenados num único objeto. Objetos provenientes de modelos lineares (ex: lme), contém dentre outras informações, valores de p, coeficientes dos preditores, fórmula do modelo, parâmetros da fórmula usada, etc. Tais objetos podem ser inspecionados usando diferentes maneiras.
+
+```{r message=FALSE, warning=FALSE}
+# Exemplo de modelo e sua classe
+library("nlme")
+modelo <- lme(distance ~ age, data = Orthodont)
+class(modelo)
+```
+
+```{r}
+# Estrutura do modelo. O que existe dentro do objeto "modelo" ? 
+names(modelo)
+```
+
+## Indexação
+
+Uma característica fundamental em R (mas também em outras linguagens de programação) é poder acessar valores usando indexação. Ou seja, usar a posição dentro do objeto (ordem, linha ou coluna) para poder extrair elementos ou realizar diferentes ações nos dados.
+
+Em vetores (1 dimensão), é possível acessar os valores usando index ou a ordem dos elementos (1:length(x)).
+
+
+```{r}
+variavel # objeto
+```
+
+```{r}
+variavel[1] # primeiro elemento do objeto
+```
+
+```{r}
+variavel[5] # último elemento do objeto
+```
+
+Em tabelas e matrizes, é possível fazer o mesmo através de colunas e linhas.
+
+```{r}
+dados[,]
+```
+
+```{r}
+dados[1,1] # elemento da primeira linha e coluna
+```
