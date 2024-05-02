@@ -1,0 +1,35 @@
+ORGANIZATION
+structure folders inside R
+set a clear hierarchy of topics
+packages folder, update
+knowledge folder add
+
+
+
+FUNCTIONS TO ADD
+get()
+do.call()
+htmlReports()
+toLatex()
+
+cluster and dissimilarity distances:
+cmdscale()
+
+clean up data:
+library(janitor)
+
+managing large files
+- option 1
+big data with ARROW apache, use C++ to manage data in R
+combine arrow + dplyr to manipulate data.
+- option 2
+data.table::fread()
+
+# interactive plots
+ggplotly(ggplot_object)
+
+
+PACKAGES TO ADD
+https://github.com/aloy/lmeresampler
+R package lmeresampler
+The lme4 and nlme packages have made fitting nested linear mixed-effects models quite easy. Using the functionality of these packages we can easily use maximum likelihood or restricted maximum likelihood to fit our model and conduct inference using our parametric toolkit. In practice, the assumptions of our model are often violated to such a degree that leads to biased estimators and incorrect standard errors. In these situations, resampling methods such as the bootstrap can be used to obtain consistent estimators of the bias and standard errors for inference. lmeresampler provides an easy way to bootstrap nested linear-mixed effects models using either the parametric, residual, cases, CGR (semi-parametric), or random effects block (REB) bootstrap fit using either lme4 or nlme. The output from lmeresampler is an lmeresamp object. Moreover, the lmeresampler package has its own print() and confint() functions, both of which follow the syntax of a generic print() and confint() function; thus, the two commands may be used with lmeresamp objects.

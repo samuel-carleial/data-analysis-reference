@@ -6,7 +6,24 @@
 
 # normal login
 > ssh kn_pop501249@bwunicluster.scc.kit.edu (deprecated)
+> ssh kn_pop501249@uc1e.scc.kit.edu         (does not work)
 > ssh kn_pop501249@uc2.scc.kit.edu
+
+
+################################################################################
+First generate new SSH key (in terminal)
+> ssh-keygen -t rsa
+keys are by default stored at .~/ssh
+Add key to https://bwidm.scc.kit.edu/ (validity of 3 months)
+
+
+SSH client application (Cyberduck)
+SFTP host
+Host/servidor: bwunicluster.scc.kit.edu
+Username:      kn_pop501249
+Pass:          MyNe...
+Private SSH key
+Two-factor authentication: FreeOTP
 
 
 ################################################################################
@@ -48,7 +65,7 @@ mkdir raw_files data output
 
 # grant one user permission to specific folder (read + write)
 > setfacl -Rm u:<user>:rwX,d:u:<user>:rwX $my_workspace
-> setfacl -Rm u:kn_pop212883:rwX,d:u:kn_pop501249:rwX /pfs/work2/workspace/scratch/kn_pop501249-ep_analysis-0
+> setfacl -Rm u:kn_pop537132:rwX,d:u:kn_pop501249:rwX /pfs/work7/workspace/scratch/kn_pop501249-psycharray
 
 # remove permissions
 > setfacl -Rb $my_workspace
@@ -68,7 +85,7 @@ mkdir raw_files data output
 
 # example: BWUNICLUSTER ----> LOCAL
 > scp kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-test1-0/trial1/test1.R ~/temp/fitus.R
-> scp -r kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work2/workspace/scratch/kn_pop501249-epigeneticAnalyses-0/job1/* ~/temp/
+> scp phenotype.csv kn_pop501249@bwunicluster.scc.kit.edu:/pfs/work7/workspace/scratch/kn_pop501249-psycharray/data/.
 
 # sandbox
 > scp  kn_pop501249@uc2.scc.kit.edu:/pfs/work7/workspace/scratch/kn_pop501249-ewas1-0/
@@ -187,7 +204,12 @@ sbatch --partition=fat job.sh
 sbatch --partition=multiple --array=1-6 job.sh
 
 sbatch --partition=fat --mem=100Gb job.sh
-sbatch --partition=multiple --array=1-6 --mem=10Gb job.sh
+sbatch --partition=multiple --array=1-6 --mem=80Gb job_exp.sh
 
 scp /Users/samuelcarleial/temp/trial_RnBeads/DRC_trial_850k/targetBL_new.csv kn_pop501249@uc2.scc.kit.edu:/pfs/work7/workspace/scratch/kn_pop501249-ewas1-0/data/.
-scp -r kn_pop501249@uc2.scc.kit.edu:/pfs/work7/workspace/scratch/kn_pop501249-ewas1-0/rjob.Rout .
+scp -r kn_pop501249@uc2.scc.kit.edu:/pfs/work7/workspace/scratch/kn_pop501249-ewas1-0/output/rnbeads_result/* .
+
+
+
+
+

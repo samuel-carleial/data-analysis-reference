@@ -1,0 +1,11 @@
+Analysis weight. The scale parameter is an estimated model parameter related to the variance of the response. The analysis weights are "known" values that can vary from observation to observation. If the analysis weight field is specified, the scale parameter, which is related to the variance of the response, is divided by the analysis weight values for each observation. Records with analysis weight values that are less than or equal to 0 or are missing are not used in the analysis.
+
+Offset. The offset term is a "structural" predictor. Its coefficient is not estimated by the model but is assumed to have the value 1; thus, the values of the offset are simply added to the linear predictor of the target. This is especially useful in Poisson regression models, where each case may have different levels of exposure to the event of interest.
+Offset is usually applied in a Poisson model, which response variable is "corrected" by the offset variable.
+For example, when modeling accident rates for individual drivers, there is an important difference between a driver who has been at fault in one accident in three years of experience and a driver who has been at fault in one accident in 25 years! The number of accidents can be modeled as a Poisson or negative binomial response with a log link if the natural log of the experience of the driver is included as an offset term.
+
+
+Q&A
+https://stats.stackexchange.com/questions/246318/difference-between-offset-and-weights
+https://stats.stackexchange.com/questions/326525/gamma-mixed-model-with-offset-and-or-weights
+https://stats.stackexchange.com/questions/297859/can-weights-and-offset-lead-to-similar-results-in-poisson-regression

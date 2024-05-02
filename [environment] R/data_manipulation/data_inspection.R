@@ -148,3 +148,28 @@ help(DataExplorer)
 DataExplorer::introduce(frogs)
 DataExplorer::create_report(frogs)
 DataExplorer::plot_correlation(frogs)
+
+
+###########################################################################
+# Clean up data -----------------------------------------------------------
+###########################################################################
+
+library(janitor)
+vignette('janitor')
+
+names(airquality)
+clean_names(names(airquality))
+make_clean_names(names(airquality))
+
+nums <- c(2.5, 3.5)
+round(nums)
+round_half_up(nums)
+
+f <- factor(c("strongly agree", "agree", "neutral", "neutral", "disagree", "strongly agree"),
+            levels = c("strongly agree", "agree", "neutral", "disagree", "strongly disagree"))
+f
+top_levels(f)
+top_levels(f, n=1)
+
+rm(nums, f)
+

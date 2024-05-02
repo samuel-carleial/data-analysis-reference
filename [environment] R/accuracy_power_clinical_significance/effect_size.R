@@ -29,14 +29,14 @@ effectMorris <-
   data_pos_T <- df[df[,time]==t2 & df[,treatment]==treat_level, outcome]
   
   # pre-calculation
-  MpreC <-  mean(data_pre_C[,outcome], na.rm=T)
-  MpreT <-  mean(data_pre_T[,outcome], na.rm=T)
-  MpostC <- mean(data_pos_C[,outcome], na.rm=T)
-  MpostT <- mean(data_pos_T[,outcome], na.rm=T)
-  SDpreC <- sd(data_pre_C[,outcome], na.rm=T)
-  SDpreT <- sd(data_pre_T[,outcome], na.rm=T)
-  nc <- length(na.omit(data_pos_C[,outcome]))
-  nt <- length(na.omit(data_pos_T[,outcome]))
+  MpreC <-  mean(data_pre_C, na.rm=T)
+  MpreT <-  mean(data_pre_T, na.rm=T)
+  MpostC <- mean(data_pos_C, na.rm=T)
+  MpostT <- mean(data_pos_T, na.rm=T)
+  SDpreC <- sd(data_pre_C, na.rm=T)
+  SDpreT <- sd(data_pre_T, na.rm=T)
+  nc <- length(na.omit(data_pos_C))
+  nt <- length(na.omit(data_pos_T))
   
   # effect size calculation
   differences <- (MpostT-MpreT) - (MpostC-MpreC)
@@ -109,8 +109,7 @@ effectCohensDz.2 <-
     test <- t.test(df2[,outcome], df1[,outcome], paired = T, alternative = "two.sided")
     Dz <- test$statistic/sqrt(nrow(df1))
     return(Dz)
-
-}
+    }
 
 ############################################################################## #
 

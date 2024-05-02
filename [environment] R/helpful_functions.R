@@ -64,7 +64,7 @@ sixPlot <- function(x) {
   screen(5)
   plot.ts(x,
           main = "Time plot", xlab = "time\n(sampling sequence)", ylab = "concentration of values")
-  abline(a = median(lag(x)), b = 0, col = "red")
+  abline(a = median(na.omit(lag(x))), b = 0, col = "red")
   mtext("median", cex = .75, 4, col = "red")
   
   screen(6)

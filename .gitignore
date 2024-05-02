@@ -24,3 +24,7 @@ report_JupiterNotebook_R_yyyy.mm.dd.ipynb.dd
 *.Rproj.user
 *.Rproj
 *.mp4
+.Rproj.user
+[environment] R/structural_equation_modeling/reference_materials/presentation_SEM_AGhoeffler2010.10.pptx
+[environment] R/structural_equation_modeling/reference_materials/presentation_SEM_AGhoeffler2010.10.pptx
+[environment] R/structural_equation_modeling/exercise_hands-on_answers.R

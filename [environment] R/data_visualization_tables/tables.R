@@ -1,4 +1,4 @@
-# TABBLES IN R #################################################################
+# TABLES IN R ##################################################################
 
 library("knitr")
 #library("devtools")
@@ -50,7 +50,7 @@ model1 <- lm(educ ~ exper + I(exper^2) + mothereduc, data = mroz1)
 tidy(model1)
 
 # example 1: kable()
-kable(tidy(model1), 
+kable(tidy(model1),
       digits = 4, align = "c",
       caption = "First stage in the 2SLS model for the 'wage' equation")
 
