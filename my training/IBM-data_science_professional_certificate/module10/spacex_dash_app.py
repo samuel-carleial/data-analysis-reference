@@ -75,23 +75,25 @@ def get_pie_chart(entered_site):
 # TASK 4:
 # Add a callback function for `site-dropdown` and `payload-slider` as inputs, `success-payload-scatter-chart` as output
 @app.callback(Output(component_id='success-payload-scatter-chart', component_property='figure'),
-              Input(component_id='site-dropdown', component_property='value'),
-              Input(component_id='payload-slider', component_property='value'))
+              [Input(component_id='site-dropdown', component_property='value'),
+              Input(component_id='payload-slider', component_property='value')])
 
 def get_scatter_plot(entered_site, entered_load):
-    filtered_df = spacex_df
+    filtered_df1 = spacex_df
+    filtered_df2 = filtered_df1[filtered_df1['Payload Mass (kg)']>=entered_load[0]]
+    filtered_df3 = filtered_df2[filtered_df2['Payload Mass (kg)']<=entered_load[1]]
     if entered_site == 'ALL':
-        fig = px.scatter(filtered_df, 
+        fig = px.scatter(filtered_df3, 
         x='Payload Mass (kg)', 
         y='class', 
-        color='Booster Version Category')
+        color='Booster Version Category').update_layout(yaxis_title='Success rate')
         return fig
     else:
-        df = filtered_df[filtered_df['Launch Site']==entered_site]
+        df = filtered_df3[filtered_df3['Launch Site']==entered_site]
         fig = px.scatter(df, 
         x='Payload Mass (kg)', 
-        y='class', 
-        color='Booster Version Category')
+        y='class',
+        color='Booster Version Category').update_layout(yaxis_title='Success rate')
         return fig
 
 # Run the app
